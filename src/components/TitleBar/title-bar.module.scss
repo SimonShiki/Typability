@@ -1,0 +1,30 @@
+.bar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 40px;
+    width: 100%;
+    user-select: none;
+    padding: 4px;
+    .title {
+        display: flex;
+        align-items: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 12px;
+    }
+    .operation {
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+    }
+    .control {
+        display: flex;
+        flex-direction: row;
+        margin-right: 12px;
+    }
+    .close {
+        transform: rotate(45deg);
+    }
+}
