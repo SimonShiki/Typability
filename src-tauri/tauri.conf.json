@@ -55,10 +55,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 680,
         "resizable": true,
         "title": "Typability",
-        "width": 800,
+        "width": 540,
         "center": true,
         "transparent": true,
         "decorations": false

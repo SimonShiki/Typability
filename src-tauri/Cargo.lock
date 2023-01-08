@@ -2970,6 +2970,7 @@ dependencies = [
 name = "typability"
 version = "0.0.0"
 dependencies = [
+ "os_info",
  "serde",
  "serde_json",
  "tauri",

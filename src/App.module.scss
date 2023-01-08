@@ -2,9 +2,24 @@
     display: block;
     width: 100%;
     height: 100%;
+    .mask {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        z-index: 10;
+        justify-content: center;
+        align-items: center;
+    }
+    .white {
+        display: flex;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
     .editor {
         margin: 0 auto;
-        max-width: 72rem;
         // Outer element
         & > div {
             margin: 0 8px !important;
@@ -14,10 +29,25 @@
             }
             :global .milkdown {
                 overflow: auto;
-                height: calc(100vh - 1rem - 56px - 40px);
+                height: calc(100vh - 1rem - 40px);
                 // ProseMirror / Editor
                 :global .editor {
                     padding: 40px 20px;
+                    height: calc(100vh - 1rem - 80px - 40px);
+                }
+            }
+        }
+    }
+}
+
+.withMenu {
+    .editor {
+        // Outer element
+        &>div {
+            :global .milkdown {
+                height: calc(100vh - 1rem - 56px - 40px);
+                // ProseMirror / Editor
+                :global .editor {
                     height: calc(100vh - 1rem - 80px - 56px - 40px);
                 }
             }

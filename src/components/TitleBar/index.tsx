@@ -2,21 +2,23 @@ import React from 'react';
 import { appWindow } from '@tauri-apps/api/window';
 import { Button } from '@fluentui/react-components';
 import styles from './title-bar.module.scss';
-import { Add20Regular, ArrowMinimize20Regular, FullScreenMaximize20Regular } from '@fluentui/react-icons';
+import { Add20Regular, ArrowDown20Regular, FullScreenMaximize20Regular } from '@fluentui/react-icons';
+import FileMenu from '../FileMenu';
+import EditMenu from '../EditMenu';
 
 const TitleBar : React.FC = () => {
     return (
         <div data-tauri-drag-region className={styles.bar}>
             <div data-tauri-drag-region className={styles.title}>Typability</div>
             <div data-tauri-drag-region className={styles.operation}>
-                <Button>File</Button>
-                <div style={{width: '10px'}}></div>
-                <Button>Edit</Button>
+                <FileMenu />
+                <div style={{width: '16px'}}></div>
+                <EditMenu />
             </div>
             <div className={styles.control}>
                 <Button
                     appearance="subtle"
-                    icon={<ArrowMinimize20Regular />}
+                    icon={<ArrowDown20Regular />}
                     onClick={async () => {
                         await appWindow.minimize();
                     }}

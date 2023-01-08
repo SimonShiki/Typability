@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Editor, rootCtx, defaultValueCtx } from '@milkdown/core';
 import { nord } from '@milkdown/theme-nord';
 import { ReactEditor, useEditor } from '@milkdown/react';
@@ -8,6 +8,7 @@ import { gfm, heading as gfmHeading } from '@milkdown/preset-gfm';
 import { menu } from '@milkdown/plugin-menu';
 import '@material-design-icons/font';
 import { history } from '@milkdown/plugin-history';
+import { replaceAll } from '@milkdown/utils';
 
 interface MilkdownEditor {
     content: string;
@@ -27,9 +28,9 @@ const syntaxMap = {
 const MilkdownEditor: React.FC<MilkdownEditor> = ({
     content,
     useMenu = false,
-    syntaxOption = 'gfm'
+    syntaxOption = 'gfm',
 }) => {
-    const { editor } = useEditor((root) => {
+    const { editor, loading, getInstance } = useEditor((root) => {
         const instance = Editor.make()
             .config((ctx) => {
                 ctx.set(defaultValueCtx, content);
@@ -40,8 +41,15 @@ const MilkdownEditor: React.FC<MilkdownEditor> = ({
 
         return instance;
         });
+    
+    useEffect(() => {
+        if (!loading) {
+            const instance = getInstance();
+            instance?.action(replaceAll(content));
+        }
+    }, [content]);
 
-    return <ReactEditor editor={editor}/>;
+    return <ReactEditor editor={editor} />;
 };
 
 export default MilkdownEditor;
