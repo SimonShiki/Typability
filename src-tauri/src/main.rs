@@ -21,10 +21,13 @@ fn send(event_type: &EventType) {
 }
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+
 #[tauri::command]
 fn open_emoji_panel() {
     send(&EventType::KeyPress(Key::MetaLeft));
     send(&EventType::KeyPress(Key::Dot));
+    send(&EventType::KeyRelease(Key::MetaLeft));
+    send(&EventType::KeyRelease(Key::Dot));
 }
 
 fn main() {

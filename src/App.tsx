@@ -3,7 +3,7 @@ import styles from './App.module.scss';
 import TitleBar from "./components/TitleBar";
 import { useAtom } from "jotai";
 import { contentJotai, filePathJotai } from "./jotais/file";
-import { aboutJotai, loadingJotai, preferenceJotai } from "./jotais/ui";
+import { aboutJotai, loadingJotai, preferenceJotai, toolbarJotai } from "./jotais/ui";
 import classNames from "classnames";
 import { Spinner } from "@fluentui/react-components";
 import { useLayoutEffect } from "react";
@@ -15,11 +15,13 @@ import { writeTextFile } from '@tauri-apps/api/fs';
 import { settingsJotai } from "./jotais/settings";
 import { useKeyPress, useInterval, useEventListener } from "ahooks";
 import About from "./components/About";
+import FloatingToolbar from "./components/FloatingToolbar";
 
 function App() {
     const [content, setContent] = useAtom(contentJotai);
     const [filePath] = useAtom(filePathJotai);
     const [loading] = useAtom(loadingJotai);
+    const [, setToolbar] = useAtom(toolbarJotai);
     const [settings] = useAtom(settingsJotai);
     const [preference, setPreference] = useAtom(preferenceJotai);
     const [about, setAbout] = useAtom(aboutJotai);
@@ -42,6 +44,13 @@ function App() {
         if (filePath === null) return;
         await writeTextFile({ path: filePath, contents: content });
         return;
+    });
+    useKeyPress('ctrl.f', (e) => {
+        e.preventDefault();
+        setToolbar('find');
+    });
+    useKeyPress('ctrl.h', () => {
+        setToolbar('replace');
     });
 
     // Read text file from path if filePath changed
@@ -81,6 +90,7 @@ function App() {
                 <About open={about} onClose={() => {
                     setAbout(false);
                 }} />
+                <FloatingToolbar />
             </div>
         </FluentProvider>
     );

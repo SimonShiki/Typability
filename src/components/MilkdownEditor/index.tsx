@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react';
 import { Editor, rootCtx, defaultValueCtx } from '@milkdown/core';
 import { nord, nordDark } from '@milkdown/theme-nord';
 import { ReactEditor, useEditor } from '@milkdown/react';
-import { commonmark, heading as commonmarkHeading} from '@milkdown/preset-commonmark';
+import { commonmark, heading as commonmarkHeading } from '@milkdown/preset-commonmark';
 import { tooltip } from '@milkdown/plugin-tooltip';
 import { gfm, heading as gfmHeading } from '@milkdown/preset-gfm';
 import { menu } from '@milkdown/plugin-menu';
@@ -10,7 +10,6 @@ import '@material-design-icons/font';
 import { history } from '@milkdown/plugin-history';
 import { replaceAll, switchTheme } from '@milkdown/utils';
 import { prism } from '@milkdown/plugin-prism';
-import { math } from '@milkdown/plugin-math';
 import { emoji } from '@milkdown/plugin-emoji';
 import { clipboard } from '@milkdown/plugin-clipboard';
 import { tokyo } from '@milkdown/theme-tokyo';
@@ -69,7 +68,6 @@ const MilkdownEditor: React.FC<MilkdownEditor> = ({
             .use(tooltip)
             .use(themeMap[theme])
             .use(prism)
-            .use(math)
             .use(emoji)
             .use(clipboard)
             .use(syntaxMap[syntaxOption]);

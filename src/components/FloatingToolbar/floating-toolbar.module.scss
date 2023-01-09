@@ -1,0 +1,28 @@
+.wrapper {
+    position: fixed;
+    top: 56px;
+    left: 1rem;
+    display: flex;
+    .card {
+        padding: 0;
+        .input {
+            display: flex;
+            flex-direction: column;
+        }
+        .buttons {
+            display: flex;
+            flex-flow: wrap;
+            max-width: 128px;
+            .close {
+                transform: rotate(45deg);
+            }
+        }
+        .found {
+            color: var(--colorNeutralForeground4);
+        }
+    }
+
+    .replace {
+        padding: 25px 0;
+    }
+}

@@ -4,9 +4,12 @@ import { version as getVersion, type as getType } from '@tauri-apps/api/os';
 import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { DocumentEdit16Regular } from '@fluentui/react-icons';
 import { useAsyncEffect } from 'ahooks';
+import { useAtom } from 'jotai';
+import { toolbarJotai } from '../../jotais/ui';
 
 const EditMenu: React.FC = () => {
     const [emojiAvailable, setEmojiAvailable] = useState<boolean>(false);
+    const [, setFloatingToolbar] = useAtom(toolbarJotai);
     useAsyncEffect(async () => {
         const type = await getType();
         if (type !== 'Windows_NT') return;
@@ -28,8 +31,12 @@ const EditMenu: React.FC = () => {
 
             <MenuPopover>
                 <MenuList>
-                    <MenuItem>Find</MenuItem>
-                    <MenuItem>Replace</MenuItem>
+                    <MenuItem onClick={() => {
+                        setFloatingToolbar('find');
+                    }}>Find</MenuItem>
+                    <MenuItem onClick={() => {
+                        setFloatingToolbar('replace');
+                    }}>Replace</MenuItem>
                     <MenuItem 
                         disabled={!emojiAvailable}
                         onClick={() => {
