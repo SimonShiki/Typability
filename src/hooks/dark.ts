@@ -13,12 +13,7 @@ export default function useIsDarkMode () {
 
     useEffect(() => {
         const mqList = window.matchMedia('(prefers-color-scheme: dark)');
-
-        /**
-         *
-         * @param {MediaQueryListEvent} event
-         */
-        const listener = (event) => {
+        const listener = (event: MediaQueryListEvent) => {
             setIsDarkMode(event.matches);
         };
 
