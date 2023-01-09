@@ -34,5 +34,5 @@ jobs:
           tagName: nightly
           releaseName: 'Typability Nightly'
           releaseBody: 'Here is a Typability Night Build.'
-          releaseDraft: true
+          releaseDraft: false
           prerelease: true
