@@ -1,8 +1,8 @@
-name: 'build(nightly)'
+name: 'build'
 on:
   push:
     branches:
-      - master
+      - release
 
 jobs:
   publish-tauri:
