@@ -105,14 +105,14 @@ const Preferences: React.FC<PerferencesProps> = ({
                         </div>
                         <div className={styles.option}>
                             <p className={styles.description}>
-                                Save interval
+                                Save interval (sec)
                             </p>
                             <Input
                                 type='number'
                                 value={String(settings.saveInterval)}
                                 disabled={!settings.autoSave}
                                 onChange={(e, data) => {
-                                    set('saveInterval', data.value);
+                                    set('saveInterval', Math.max(parseInt(data.value) || 0, 10));
                                 }}
                             />
                         </div>

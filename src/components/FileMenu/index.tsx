@@ -6,7 +6,7 @@ import  { open as openFilePicker, save as saveFilePicker } from '@tauri-apps/api
 import { documentDir } from '@tauri-apps/api/path';
 import { contentJotai, filePathJotai } from '../../jotais/file';
 import { writeTextFile } from '@tauri-apps/api/fs';
-import { preferenceJotai } from '../../jotais/ui';
+import { aboutJotai, preferenceJotai } from '../../jotais/ui';
 import * as showdown from 'showdown';
 
 const availbleExts = [{
@@ -26,6 +26,7 @@ const FileMenu: React.FC = () => {
     const [filePath, setFilePath] = useAtom(filePathJotai);
     const [,setContent] = useAtom(contentJotai);
     const [, setPreference] = useAtom(preferenceJotai);
+    const [, setAbout] = useAtom(aboutJotai);
     const [content] = useAtom(contentJotai);
     return (
         <Menu>
@@ -91,6 +92,9 @@ const FileMenu: React.FC = () => {
                     <MenuItem onClick={() => {
                         setPreference(true);
                     }}>Preferences</MenuItem>
+                    <MenuItem onClick={() => {
+                        setAbout(true);
+                    }}>About</MenuItem>
                 </MenuList>
             </MenuPopover>
         </Menu>

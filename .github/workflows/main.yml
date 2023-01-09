@@ -31,8 +31,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: nightly
-          releaseName: 'Typability Nightly'
-          releaseBody: 'Here is a Typability Night Build.'
-          releaseDraft: false
-          prerelease: true
+          tagName: __VERSION__
+          releaseName: 'Typability __VERSION__'
+          releaseBody: 'Write here'
+          releaseDraft: true
+          prerelease: false

@@ -1,8 +1,8 @@
 [package]
 name = "typability"
-version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+version = "0.1.0"
+description = "a WYSIWYG markdown editor based on Milkdown."
+authors = ["SimonShiki"]
 license = ""
 repository = ""
 edition = "2021"
@@ -20,6 +20,7 @@ tauri = { version = "1.2", features = ["api-all"] }
 window-vibrancy = "0.3.2"
 window-shadows = "0.2.1"
 os_info = "3.5.1"
+rdev = "0.5.2"
 
 [features]
 # by default Tauri runs in production mode

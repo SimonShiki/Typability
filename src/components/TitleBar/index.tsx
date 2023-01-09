@@ -6,10 +6,11 @@ import { Add20Regular, ArrowDown20Regular, FullScreenMaximize20Regular } from '@
 import FileMenu from '../FileMenu';
 import EditMenu from '../EditMenu';
 import { useAtom } from 'jotai';
-import { preferenceJotai } from '../../jotais/ui';
+import { aboutJotai, preferenceJotai } from '../../jotais/ui';
 
 const TitleBar : React.FC = () => {
     const [preference] = useAtom(preferenceJotai);
+    const [about] = useAtom(aboutJotai);
     return (
         <>
             <div data-tauri-drag-region className={styles.bar}>
@@ -43,7 +44,7 @@ const TitleBar : React.FC = () => {
                     />
                 </div>
             </div>
-            {preference && <div data-tauri-drag-region className={styles.invisibleBar} />}
+            {(preference || about) && <div data-tauri-drag-region className={styles.invisibleBar} />}
         </>
     );
 };
