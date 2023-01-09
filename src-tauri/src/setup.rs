@@ -8,9 +8,8 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
     let win = app.get_window("main").unwrap();
     set_shadow(&win, true).unwrap();
 
-    window_vibrancy::apply_vibrancy(&win, NSVisualEffectMaterial::FullScreenUI)
+    window_vibrancy::apply_vibrancy(&win, NSVisualEffectMaterial::FullScreenUI, None, None)
         .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
-
     Ok(())
 }
 
