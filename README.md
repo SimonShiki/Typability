@@ -5,6 +5,9 @@
 # Typability
 a WYSIWYG markdown editor based on [Milkdown](https://milkdown.dev/).
 
+[![build(nightly)](https://github.com/SimonShiki/Typability/actions/workflows/main.yml/badge.svg)](https://github.com/SimonShiki/Typability/actions/workflows/main.yml)
+
+
 <img src="./images/typability-screenshot.png" width="400" />
 </div>
 
