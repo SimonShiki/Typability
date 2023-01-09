@@ -16,6 +16,7 @@
         }
     },
     "rules": {
-        "semi": "error"
+        "semi": "error",
+        "indent": [2, 4]
     }
 }

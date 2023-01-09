@@ -6,6 +6,8 @@ import  { open as openFilePicker, save as saveFilePicker } from '@tauri-apps/api
 import { documentDir } from '@tauri-apps/api/path';
 import { contentJotai, filePathJotai } from '../../jotais/file';
 import { writeTextFile } from '@tauri-apps/api/fs';
+import { preferenceJotai } from '../../jotais/ui';
+import * as showdown from 'showdown';
 
 const availbleExts = [{
     name: 'Markdown',
@@ -15,8 +17,15 @@ const availbleExts = [{
     extensions: ['txt']
 }];
 
+const availbleExportExts = [{
+    name: 'HTML',
+    extensions: ['htm']
+}];
+
 const FileMenu: React.FC = () => {
     const [filePath, setFilePath] = useAtom(filePathJotai);
+    const [,setContent] = useAtom(contentJotai);
+    const [, setPreference] = useAtom(preferenceJotai);
     const [content] = useAtom(contentJotai);
     return (
         <Menu>
@@ -32,6 +41,10 @@ const FileMenu: React.FC = () => {
 
             <MenuPopover>
                 <MenuList>
+                    <MenuItem onClick={async () => {
+                        setFilePath(null);
+                        setContent('');
+                    }}>New</MenuItem>
                     <MenuItem onClick={async () => {
                         const selected = await openFilePicker({
                             defaultPath: await documentDir(),
@@ -58,11 +71,29 @@ const FileMenu: React.FC = () => {
                         setFilePath(selected as string);
                     }}>Save As</MenuItem>
                     <MenuDivider />
-                    <MenuItem>Export</MenuItem>
-                    <MenuItem>Preferences</MenuItem>
+                    <MenuItem onClick={async () => {
+                        const selected = await saveFilePicker({
+                            defaultPath: await documentDir(),
+                            filters: availbleExportExts
+                        });
+                        if (selected === null) return;
+                        const index = selected.lastIndexOf('.');
+                        if (index === -1) return;
+                        const ext = selected.substring(index + 1);
+                        switch (ext) {
+                        case 'htm':
+                            // eslint-disable-next-line no-case-declarations
+                            const converter = new showdown.Converter();
+                            await writeTextFile({ path: selected as string, contents: converter.makeHtml(content) });
+                            break;
+                        }
+                    }}>Export</MenuItem>
+                    <MenuItem onClick={() => {
+                        setPreference(true);
+                    }}>Preferences</MenuItem>
                 </MenuList>
             </MenuPopover>
-      </Menu>
+        </Menu>
     );
 };
 

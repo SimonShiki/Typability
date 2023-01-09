@@ -1,0 +1,13 @@
+.body {
+    user-select: none;
+    .option {
+            display: flex;
+            margin: 1rem 0;
+            flex-direction: row;
+    
+            .description {
+                flex-grow: 1;
+                margin: 0;
+            }
+        }
+}
