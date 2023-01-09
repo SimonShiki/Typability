@@ -41,6 +41,7 @@ const About: React.FC<AboutProps> = ({
                                 <Text weight="semibold" size={400}>Typability</Text>
                                 <Text>Version: {version === null ? 'Loading...' : version}</Text>
                                 <Text>Tauri Version: {tauriVersion === null ? 'Loading...' : tauriVersion}</Text>
+                                <Text>Thanks to SoilZhu for drawing the icon!</Text>
                             </div>
                         </div>
                     </DialogContent>
