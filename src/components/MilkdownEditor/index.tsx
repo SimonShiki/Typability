@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useLayoutEffect } from 'react';
-import { Editor, rootCtx, defaultValueCtx, editorStateCtx } from '@milkdown/core';
+import { Editor, rootCtx, defaultValueCtx } from '@milkdown/core';
 import { nord, nordDark } from '@milkdown/theme-nord';
 import { ReactEditor, useEditor } from '@milkdown/react';
 import { commonmark, heading as commonmarkHeading } from '@milkdown/preset-commonmark';
