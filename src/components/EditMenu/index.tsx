@@ -5,11 +5,12 @@ import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTri
 import { DocumentEdit16Regular } from '@fluentui/react-icons';
 import { useAsyncEffect } from 'ahooks';
 import { useAtom } from 'jotai';
-import { toolbarJotai } from '../../jotais/ui';
+import { editMenuJotai, toolbarJotai } from '../../jotais/ui';
 
 const EditMenu: React.FC = () => {
     const [emojiAvailable, setEmojiAvailable] = useState<boolean>(false);
     const [, setFloatingToolbar] = useAtom(toolbarJotai);
+    const [, setEditMenu] = useAtom(editMenuJotai);
     useAsyncEffect(async () => {
         const type = await getType();
         if (type !== 'Windows_NT') return;
@@ -18,7 +19,9 @@ const EditMenu: React.FC = () => {
         if (buildNumber >= 17134) setEmojiAvailable(true);
     }, []);
     return (
-        <Menu>
+        <Menu onOpenChange={(e, data) => {
+            setEditMenu(data.open);
+        }}>
             <MenuTrigger disableButtonEnhancement>
                 <MenuButton
                     size="small"

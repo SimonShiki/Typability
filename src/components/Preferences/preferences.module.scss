@@ -1,6 +1,19 @@
 .body {
     user-select: none;
-    .option {
+    .content {
+        padding: 0.5rem;
+        .alert {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                background-color: var(--colorPaletteYellowBackground2);
+                .icon {
+                    flex-grow: 0 !important;
+                    display: inline;
+                }
+            }
+        
+        .option {
             display: flex;
             margin: 1rem 0;
             flex-direction: row;
@@ -10,4 +23,5 @@
                 margin: 0;
             }
         }
+    }
 }

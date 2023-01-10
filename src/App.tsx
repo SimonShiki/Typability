@@ -6,14 +6,15 @@ import { contentJotai, filePathJotai } from "./jotais/file";
 import { aboutJotai, loadingJotai, preferenceJotai, toolbarJotai } from "./jotais/ui";
 import classNames from "classnames";
 import { Spinner } from "@fluentui/react-components";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import { readTextFile } from '@tauri-apps/api/fs';
 import { FluentProvider, webLightTheme, webDarkTheme } from '@fluentui/react-components';
 import useIsDarkMode from "./hooks/dark";
 import Preferences from "./components/Preferences";
 import { writeTextFile } from '@tauri-apps/api/fs';
 import { settingsJotai } from "./jotais/settings";
-import { useKeyPress, useInterval, useEventListener } from "ahooks";
+import { useKeyPress, useInterval, useEventListener, useAsyncEffect } from "ahooks";
+import { type as getType } from '@tauri-apps/api/os';
 import About from "./components/About";
 import FloatingToolbar from "./components/FloatingToolbar";
 
@@ -24,6 +25,7 @@ function App() {
     const [, setToolbar] = useAtom(toolbarJotai);
     const [settings] = useAtom(settingsJotai);
     const [preference, setPreference] = useAtom(preferenceJotai);
+    const [linux, setLinux] = useState(false);
     const [about, setAbout] = useAtom(aboutJotai);
     const isDarkMode = useIsDarkMode();
 
@@ -53,6 +55,12 @@ function App() {
         setToolbar('replace');
     });
 
+    // If it's running in Linux, use specific style instead.
+    useAsyncEffect(async () => {
+        const type = await getType();
+        if (type === 'Linux') setLinux(true);
+    }, []);
+
     // Read text file from path if filePath changed
     useLayoutEffect(() => {
         if (filePath !== null) {
@@ -64,15 +72,18 @@ function App() {
 
     return (
         <FluentProvider theme={isDarkMode ? webDarkTheme : webLightTheme} className='provider'>
-            <div className={styles.container}>
+            <div className={classNames(styles.container, {
+                [styles.window]: linux
+            })}>
                 <TitleBar />
-                <div className={styles.editor}>
+                <div className={styles.editor} spellCheck={false}>
                     <MilkdownEditor
                         useMenu={false}
                         content={content}
                         onMarkdownUpdated={(markdown) => {
                             setContent(markdown);
                         }}
+                        syntaxOption={settings.syntax}
                         theme={isDarkMode ? settings.themeDark : settings.theme}
                     />
                 </div>

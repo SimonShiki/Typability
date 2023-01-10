@@ -40,6 +40,7 @@ const themeMap = {
 };
 
 let currentContent = '';
+let currentTheme = '';
 
 const MilkdownEditor: React.FC<MilkdownEditor> = ({
     content,
@@ -47,10 +48,10 @@ const MilkdownEditor: React.FC<MilkdownEditor> = ({
     syntaxOption = 'gfm',
     theme = 'nord',
     onMarkdownUpdated,
-
 }) => {
     const { editor, loading, getInstance } = useEditor((root) => {
         currentContent = content;
+        currentTheme = theme;
         const instance = Editor.make()
             .config((ctx) => {
                 ctx.set(defaultValueCtx, content);
@@ -80,10 +81,16 @@ const MilkdownEditor: React.FC<MilkdownEditor> = ({
     useLayoutEffect(() => {
         if (!loading) {
             const instance = getInstance();
-            instance?.action(replaceAll(content));
-            instance?.action(switchTheme(themeMap[theme]));
+            if (content !== currentContent) {
+                instance?.action(replaceAll(content));
+                currentContent = content;
+            }
+            if (theme !== currentTheme) {
+                instance?.action(switchTheme(themeMap[theme]));
+                currentTheme = theme;
+            }
         }
-    }, [content, theme]);
+    }, [content, theme, syntaxOption]);
 
     return <ReactEditor editor={editor} />;
 };
@@ -94,6 +101,8 @@ function areEqual (prevProps: Readonly<MilkdownEditor>, nextProps: Readonly<Milk
             if (nextProps[nextProp as keyof typeof nextProps] !== prevProps[nextProp as keyof typeof prevProps]) {
                 // Don't refresh if content is equal
                 if (nextProp === 'content' && nextProps.content === currentContent) continue;
+                // Syntax cannot be removed as a plugin, ignore it before re-create editor.
+                if (nextProp === 'syntaxOption') continue;
                 // For Milkdown Editor, Function is a constant, don't update
                 if (typeof nextProps[nextProp as keyof typeof nextProps] === 'function') continue;
                 return false;

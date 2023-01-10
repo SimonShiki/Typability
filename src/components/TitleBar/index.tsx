@@ -17,7 +17,7 @@ const TitleBar : React.FC = () => {
                 <div data-tauri-drag-region className={styles.title}>Typability</div>
                 <div data-tauri-drag-region className={styles.operation}>
                     <FileMenu />
-                    <div style={{ width: '16px' }}></div>
+                    <div style={{ width: '0.5rem' }}></div>
                     <EditMenu />
                 </div>
                 <div className={styles.control}>

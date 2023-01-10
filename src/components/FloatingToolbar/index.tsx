@@ -16,9 +16,12 @@ const FloatingToolbar: React.FC = () => {
     if (!status) return <></>;
     return (
         <div className={styles.wrapper}>
-            <Card className={classNames(styles.card, {
-                [styles.replace]: status === 'replace'
-            })}>
+            <Card
+                appearance="filled-alternative"
+                className={classNames(styles.card, {
+                    [styles.replace]: status === 'replace'
+                })}
+            >
                 <Toolbar>
                     <div className={styles.input}>
                         <Input placeholder="Find..." />

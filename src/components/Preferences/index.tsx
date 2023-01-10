@@ -7,13 +7,17 @@ import {
     DialogSurface,
     DialogTitle,
     Input,
+    Text,
     Switch
 } from '@fluentui/react-components';
-import React from 'react';
+import React, { useState } from 'react';
 import { Dropdown, Option } from '@fluentui/react-components/unstable';
 import styles from './preferences.module.scss';
 import { useAtom } from 'jotai';
 import { settingsJotai } from '../../jotais/settings';
+import { Card } from '@fluentui/react-components/unstable';
+import { relaunch } from '@tauri-apps/api/process';
+import { Warning16Regular } from '@fluentui/react-icons';
 
 interface PerferencesProps {
     open: boolean;
@@ -30,28 +34,54 @@ const languageMap = {
     en: 'English'
 };
 
+const syntaxMap = {
+    gfm: 'GitHub Flavored Markdown',
+    commonmark: 'CommonMark'
+};
+
 const Preferences: React.FC<PerferencesProps> = ({
     open,
     onClose
 }) => {
     const [settings, setSettings] = useAtom(settingsJotai);
-    function set (key: keyof typeof settings, value: unknown) {
+    const [relaunchItem, setRelaunchItem] = useState<{[prop in keyof typeof settings]?: unknown}>({});
+    function setSetting (key: keyof typeof settings, value: unknown) {
         setSettings(Object.assign({}, settings, {
             [key]: value
         }));
+    }
+    function addRelaunchItem (key: keyof typeof settings, value: unknown) {
+        setRelaunchItem(Object.assign({}, relaunchItem, {
+            [key]: value
+        }));
+    }
+    function deleteRelaunchItem (key: keyof typeof settings) {
+        const modifiedRelaunchItem = Object.assign({}, relaunchItem);
+        delete modifiedRelaunchItem[key];
+        setRelaunchItem(modifiedRelaunchItem);
+    }
+    async function relaunchApply () {
+        setSettings(Object.assign({}, settings, relaunchItem));
+        await relaunch();
     }
     return (
         <Dialog open={open}>
             <DialogSurface>
                 <DialogBody className={styles.body}>
                     <DialogTitle>Preferences</DialogTitle>
-                    <DialogContent>
+                    <DialogContent className={styles.content}>
+                        {Object.keys(relaunchItem).length !== 0 && (
+                            <Card appearance="outline" className={styles.alert}>
+                                <Warning16Regular className={styles.icon} />
+                                <Text weight="semibold">You need to re-launch to apply the changes</Text>
+                            </Card>
+                        )}
                         <div className={styles.option}>
                             <p className={styles.description}>
                                 Language
                             </p>
                             <Dropdown value={languageMap[settings.language]} onOptionSelect={(e, data) => {
-                                set('language', data.optionValue);
+                                setSetting('language', data.optionValue);
                             }}>
                                 {/*TODO: Use react-intl instead */}
                                 <Option value="en">English</Option>
@@ -64,7 +94,7 @@ const Preferences: React.FC<PerferencesProps> = ({
                             <Dropdown
                                 value={themeMap[settings.theme]}
                                 onOptionSelect={(e, data) => {
-                                    set('theme', data.optionValue);
+                                    setSetting('theme', data.optionValue);
                                 }}
                             >
                                 <Option value="nord">Nord</Option>
@@ -79,7 +109,7 @@ const Preferences: React.FC<PerferencesProps> = ({
                             <Dropdown
                                 value={themeMap[settings.themeDark]}
                                 onOptionSelect={(e, data) => {
-                                    set('themeDark', data.optionValue);
+                                    setSetting('themeDark', data.optionValue);
                                 }}
                             >
                                 <Option value="nord">Nord</Option>
@@ -89,10 +119,23 @@ const Preferences: React.FC<PerferencesProps> = ({
                         </div>
                         <div className={styles.option}>
                             <p className={styles.description}>
+                                Syntax
+                            </p>
+                            <Dropdown value={syntaxMap[relaunchItem.syntax as keyof typeof syntaxMap ?? settings.syntax]} onOptionSelect={(e, data) => {
+                                // setSetting('syntax', data.optionValue);
+                                if (data.optionValue !== settings.syntax) addRelaunchItem('syntax', data.optionValue);
+                                else deleteRelaunchItem('syntax');
+                            }}>
+                                <Option value="commonmark">CommonMark</Option>
+                                <Option value="gfm">GitHub Flavored Markdown</Option>
+                            </Dropdown>
+                        </div>
+                        <div className={styles.option}>
+                            <p className={styles.description}>
                                 Auto save
                             </p>
                             <Switch checked={settings.autoSave} onChange={(e, data) => {
-                                set('autoSave', data.checked);
+                                setSetting('autoSave', data.checked);
                             }} />
                         </div>
                         <div className={styles.option}>
@@ -100,7 +143,7 @@ const Preferences: React.FC<PerferencesProps> = ({
                                 Save when editor blurred
                             </p>
                             <Switch checked={settings.saveBlur} onChange={(e, data) => {
-                                set('saveBlur', data.checked);
+                                setSetting('saveBlur', data.checked);
                             }} />
                         </div>
                         <div className={styles.option}>
@@ -112,7 +155,7 @@ const Preferences: React.FC<PerferencesProps> = ({
                                 value={String(settings.saveInterval)}
                                 disabled={!settings.autoSave}
                                 onChange={(e, data) => {
-                                    set('saveInterval', Math.max(parseInt(data.value) || 0, 10));
+                                    setSetting('saveInterval', Math.max(parseInt(data.value) || 0, 10));
                                 }}
                             />
                         </div>
@@ -127,8 +170,9 @@ const Preferences: React.FC<PerferencesProps> = ({
                     </DialogContent>
                     <DialogActions>
                         <Button appearance="primary" onClick={() => {
-                            onClose && onClose();
-                        }}>Ok</Button>
+                            if (Object.keys(relaunchItem).length !== 0) relaunchApply();
+                            else onClose && onClose();
+                        }}>{Object.keys(relaunchItem).length !== 0 ? 'Re-launch' : 'Ok'}</Button>
                     </DialogActions>
                 </DialogBody>
             </DialogSurface>
