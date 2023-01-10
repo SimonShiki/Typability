@@ -6,7 +6,7 @@ import { contentJotai, filePathJotai } from "./jotais/file";
 import { aboutJotai, loadingJotai, preferenceJotai, toolbarJotai } from "./jotais/ui";
 import classNames from "classnames";
 import { Spinner } from "@fluentui/react-components";
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { readTextFile } from '@tauri-apps/api/fs';
 import { FluentProvider, webLightTheme, webDarkTheme } from '@fluentui/react-components';
 import useIsDarkMode from "./hooks/dark";
@@ -17,6 +17,7 @@ import { useKeyPress, useInterval, useEventListener, useAsyncEffect } from "ahoo
 import { type as getType } from '@tauri-apps/api/os';
 import About from "./components/About";
 import FloatingToolbar from "./components/FloatingToolbar";
+import { Editor } from "@milkdown/core";
 
 function App() {
     const [content, setContent] = useAtom(contentJotai);
@@ -28,6 +29,7 @@ function App() {
     const [linux, setLinux] = useState(false);
     const [about, setAbout] = useAtom(aboutJotai);
     const isDarkMode = useIsDarkMode();
+    const editorInstance = useRef<Editor>(null);
 
     // Auto save
     useInterval(async () => {
@@ -85,6 +87,7 @@ function App() {
                         }}
                         syntaxOption={settings.syntax}
                         theme={isDarkMode ? settings.themeDark : settings.theme}
+                        ref={editorInstance}
                     />
                 </div>
                 <div
@@ -101,7 +104,7 @@ function App() {
                 <About open={about} onClose={() => {
                     setAbout(false);
                 }} />
-                <FloatingToolbar />
+                <FloatingToolbar editorInstance={editorInstance} />
             </div>
         </FluentProvider>
     );

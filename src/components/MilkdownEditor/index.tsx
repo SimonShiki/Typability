@@ -1,5 +1,5 @@
-import React, { useLayoutEffect } from 'react';
-import { Editor, rootCtx, defaultValueCtx } from '@milkdown/core';
+import React, { forwardRef, useEffect, useLayoutEffect } from 'react';
+import { Editor, rootCtx, defaultValueCtx, editorStateCtx } from '@milkdown/core';
 import { nord, nordDark } from '@milkdown/theme-nord';
 import { ReactEditor, useEditor } from '@milkdown/react';
 import { commonmark, heading as commonmarkHeading } from '@milkdown/preset-commonmark';
@@ -10,11 +10,11 @@ import '@material-design-icons/font';
 import { history } from '@milkdown/plugin-history';
 import { replaceAll, switchTheme } from '@milkdown/utils';
 import { prism } from '@milkdown/plugin-prism';
-import { emoji } from '@milkdown/plugin-emoji';
 import { clipboard } from '@milkdown/plugin-clipboard';
 import { tokyo } from '@milkdown/theme-tokyo';
 import { listener, listenerCtx } from '@milkdown/plugin-listener';
 import 'katex/dist/katex.min.css';
+
 
 interface MilkdownEditor {
     content: string;
@@ -22,6 +22,7 @@ interface MilkdownEditor {
     syntaxOption?: keyof typeof syntaxMap;
     theme?: keyof typeof themeMap;
     onMarkdownUpdated?: (markdown: string, prevMarkdown: string | null) => void;
+    ref?: React.ForwardedRef<Editor>;
 }
 
 const syntaxMap = {
@@ -42,13 +43,13 @@ const themeMap = {
 let currentContent = '';
 let currentTheme = '';
 
-const MilkdownEditor: React.FC<MilkdownEditor> = ({
+const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEditor>(({
     content,
     useMenu = false,
     syntaxOption = 'gfm',
     theme = 'nord',
     onMarkdownUpdated,
-}) => {
+}, ref) => {
     const { editor, loading, getInstance } = useEditor((root) => {
         currentContent = content;
         currentTheme = theme;
@@ -69,7 +70,6 @@ const MilkdownEditor: React.FC<MilkdownEditor> = ({
             .use(tooltip)
             .use(themeMap[theme])
             .use(prism)
-            .use(emoji)
             .use(clipboard)
             .use(syntaxMap[syntaxOption]);
 
@@ -77,7 +77,14 @@ const MilkdownEditor: React.FC<MilkdownEditor> = ({
 
         return instance;
     });
-    
+
+    useEffect(() => {
+        if (ref) {
+            if (typeof ref === 'function') ref(getInstance() ?? null);
+            else ref.current = getInstance() ?? null;
+        }
+    });
+
     useLayoutEffect(() => {
         if (!loading) {
             const instance = getInstance();
@@ -93,7 +100,7 @@ const MilkdownEditor: React.FC<MilkdownEditor> = ({
     }, [content, theme, syntaxOption]);
 
     return <ReactEditor editor={editor} />;
-};
+});
 
 function areEqual (prevProps: Readonly<MilkdownEditor>, nextProps: Readonly<MilkdownEditor>) {
     if (prevProps !== nextProps) {

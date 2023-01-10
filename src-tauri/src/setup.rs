@@ -8,7 +8,7 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
     let win = app.get_window("main").unwrap();
     set_shadow(&win, true).unwrap();
 
-    window_vibrancy::apply_vibrancy(&win, NSVisualEffectMaterial::FullScreenUI, None, None)
+    window_vibrancy::apply_vibrancy(&win, NSVisualEffectMaterial::HudWindow, None, None)
         .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
     Ok(())
 }
@@ -16,7 +16,6 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
 #[cfg(target_os = "windows")]
 pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>> {
     let win = app.get_window("main").unwrap();
-
     set_shadow(&win, true).unwrap();
 
     use os_info::Version;
