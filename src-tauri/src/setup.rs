@@ -56,8 +56,7 @@ pub fn clear_arcylic(window: tauri::Window) {
         .expect("Unsupported platform! 'clear_arcylic' is only supported on Windows 10.0.17134");
 }
 
-#[cfg(target_os = "windows")]
-fn send(event_type: &EventType) { // Now it's only available on Windows, don't compile it in macOS
+fn send(event_type: &EventType) {
     let delay = time::Duration::from_millis(20);
     match simulate(event_type) {
         Ok(()) => (),
