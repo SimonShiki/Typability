@@ -26,6 +26,9 @@
       },
       "window": {
         "all": true
+      },
+      "path": {
+        "all": true
       }
     },
     "bundle": {

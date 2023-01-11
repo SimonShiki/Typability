@@ -2,18 +2,17 @@ import MilkdownEditor from "./components/MilkdownEditor";
 import styles from './App.module.scss';
 import TitleBar from "./components/TitleBar";
 import { useAtom } from "jotai";
-import { contentJotai, filePathJotai } from "./jotais/file";
+import { contentJotai, filePathJotai, savedJotai } from "./jotais/file";
 import { aboutJotai, loadingJotai, preferenceJotai, toolbarJotai, vibrancyJotai } from "./jotais/ui";
 import classNames from "classnames";
 import { Spinner } from "@fluentui/react-components";
-import { useEffect, useLayoutEffect, useRef } from "react";
-import { readTextFile } from '@tauri-apps/api/fs';
+import { useEffect, useRef } from "react";
 import { FluentProvider, webLightTheme, webDarkTheme } from '@fluentui/react-components';
 import useIsDarkMode from "./hooks/dark";
 import Preferences from "./components/Preferences";
-import { writeTextFile } from '@tauri-apps/api/fs';
+import { writeTextFile, readTextFile } from '@tauri-apps/api/fs';
 import { settingsJotai } from "./jotais/settings";
-import { useKeyPress, useInterval, useEventListener, useAsyncEffect } from "ahooks";
+import { useKeyPress, useInterval, useEventListener, useAsyncEffect, useUpdateLayoutEffect } from "ahooks";
 import { version as getVersion, type as getType } from '@tauri-apps/api/os';
 import About from "./components/About";
 import { invoke } from '@tauri-apps/api/tauri';
@@ -25,6 +24,7 @@ function App() {
     const [filePath] = useAtom(filePathJotai);
     const [loading] = useAtom(loadingJotai);
     const [, setToolbar] = useAtom(toolbarJotai);
+    const [, setSaved] = useAtom(savedJotai);
     const [settings] = useAtom(settingsJotai);
     const [preference, setPreference] = useAtom(preferenceJotai);
     const [, setVibrancy] = useAtom(vibrancyJotai);
@@ -36,19 +36,22 @@ function App() {
     useInterval(async () => {
         if (filePath === null) return;
         await writeTextFile({ path: filePath, contents: content });
+        setSaved(true);
+
     }, settings.autoSave ? settings.saveInterval * 1000 : -1);
 
     // Save when editor blurred
     useEventListener('blur', async () => {
         if (!settings.saveBlur || filePath === null) return;
         await writeTextFile({ path: filePath, contents: content });
+        setSaved(true);
     });
 
     // Shortcuts
     useKeyPress('ctrl.s', async () => {
         if (filePath === null) return;
         await writeTextFile({ path: filePath, contents: content });
-        return;
+        setSaved(true);
     });
     useKeyPress('ctrl.f', (e) => {
         e.preventDefault();
@@ -101,10 +104,11 @@ function App() {
     }, []);
 
     // Read text file from path if filePath changed
-    useLayoutEffect(() => {
+    useUpdateLayoutEffect(() => {
         if (filePath !== null) {
             readTextFile(filePath).then((text) => {
                 setContent(text as string);
+                setSaved(true);
             });
         }
     }, [filePath]);

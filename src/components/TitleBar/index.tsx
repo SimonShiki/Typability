@@ -1,5 +1,6 @@
 import React from 'react';
 import { appWindow } from '@tauri-apps/api/window';
+import { confirm } from '@tauri-apps/api/dialog';
 import { Button } from '@fluentui/react-components';
 import styles from './title-bar.module.scss';
 import { Add20Regular, ArrowDown20Regular, FullScreenMaximize20Regular } from '@fluentui/react-icons';
@@ -8,6 +9,8 @@ import EditMenu from '../EditMenu';
 import { useAtom } from 'jotai';
 import { aboutJotai, preferenceJotai } from '../../jotais/ui';
 import { Editor } from '@milkdown/core';
+import { contentJotai, filePathJotai, savedJotai } from '../../jotais/file';
+import { writeTextFile } from '@tauri-apps/api/fs';
 
 interface TitleBar {
     editorInstance: {
@@ -18,6 +21,9 @@ interface TitleBar {
 const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
     const [preference] = useAtom(preferenceJotai);
     const [about] = useAtom(aboutJotai);
+    const [content] = useAtom(contentJotai);
+    const [filePath] = useAtom(filePathJotai);
+    const [saved] = useAtom(savedJotai);
     return (
         <>
             <div data-tauri-drag-region className={styles.bar}>
@@ -46,6 +52,15 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
                         appearance="subtle"
                         icon={<Add20Regular className={styles.close} />}
                         onClick={async () => {
+                            if (!saved) {
+                                const result = await confirm('Do you need to save and then exit?', {
+                                    title: 'You haven\'t saved it yet',
+                                    type: 'warning'
+                                });
+                                if (result && filePath !== null) {
+                                    await writeTextFile({ path: filePath, contents: content });
+                                } else return;
+                            }
                             await appWindow.close();
                         }}
                     />

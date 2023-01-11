@@ -4,7 +4,7 @@ import { Folder16Regular } from '@fluentui/react-icons';
 import { useAtom } from 'jotai';
 import  { open as openFilePicker, save as saveFilePicker } from '@tauri-apps/api/dialog';
 import { documentDir } from '@tauri-apps/api/path';
-import { contentJotai, filePathJotai } from '../../jotais/file';
+import { contentJotai, filePathJotai, savedJotai } from '../../jotais/file';
 import { writeTextFile } from '@tauri-apps/api/fs';
 import { aboutJotai, preferenceJotai } from '../../jotais/ui';
 import * as showdown from 'showdown';
@@ -27,6 +27,7 @@ const FileMenu: React.FC = () => {
     const [,setContent] = useAtom(contentJotai);
     const [, setPreference] = useAtom(preferenceJotai);
     const [, setAbout] = useAtom(aboutJotai);
+    const [, setSaved] = useAtom(savedJotai);
     const [content] = useAtom(contentJotai);
     return (
         <Menu>
@@ -68,6 +69,7 @@ const FileMenu: React.FC = () => {
                         if (selected === null) return;
 
                         await writeTextFile({ path: selected as string, contents: content });
+                        setSaved(true);
 
                         setFilePath(selected as string);
                     }}>Save As</MenuItem>
