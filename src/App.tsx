@@ -87,13 +87,15 @@ function App() {
                     });
                 }
             } else {
-                if (parseFloat(version) >= 10.14) { // macOS 10.14 Mojave +
-                    setVibrancy({
-                        arcylic: false,
-                        mica: false,
-                        vibrancy: true
-                    });
-                }
+                /*
+                 * FluentUI doesn't work on macOS 11.3 - (Safari 14.1 -)
+                 * For vibrancy feature(macOS 10.14 +), there's no need to detect version.
+                */
+                setVibrancy({
+                    arcylic: false,
+                    mica: false,
+                    vibrancy: true
+                });
             }
         }
     }, []);

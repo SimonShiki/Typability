@@ -67,8 +67,7 @@ export class Finder {
             const ep = this.getNodeEndpoints(this.tr.doc, node);
             if (ep === null) return;
             while ((foundAt = node.textContent.slice(index).search(new RegExp(findStr, this.caseSensitive ? '' : 'i'))) > -1) {
-                // Maybe there's more elegant way to create text selection?
-                const sel = new TextSelection(this.tr.doc.resolve(ep.from + index + foundAt + 1), this.tr.doc.resolve(ep.from + index + foundAt + findStr.length + 1));
+                const sel = TextSelection.create(this.tr.doc, ep.from + index + foundAt + 1, ep.from + index + foundAt + findStr.length + 1);
                 ret.push(sel);
                 index = index + foundAt + findStr.length;
             }

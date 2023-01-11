@@ -7,11 +7,26 @@
   },
   "package": {
     "productName": "Typability",
-    "version": "0.1.0"
+    "version": "../package.json"
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "all": false,
+      "fs":{
+        "all": true
+      },
+      "os":{
+        "all": true
+      },
+      "app": {
+        "all": true
+      },
+      "dialog": {
+        "all": true
+      },
+      "window": {
+        "all": true
+      }
     },
     "bundle": {
       "active": true,
@@ -29,11 +44,12 @@
         "icons/icon.ico"
       ],
       "identifier": "shiki.typability",
-      "longDescription": "",
+      "longDescription": "a WYSIWYG markdown editor based on Milkdown.",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
         "frameworks": [],
+        "minimumSystemVersion":"11.3",
         "providerShortName": null,
         "signingIdentity": null
       },

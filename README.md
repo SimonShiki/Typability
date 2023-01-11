@@ -6,7 +6,7 @@
 a WYSIWYG markdown editor based on [Milkdown](https://milkdown.dev/).
 (Thanks to [SoilZhu](https://github.com/SoilZhu) for drawing this icon!)
 
-[![build(nightly)](https://github.com/SimonShiki/Typability/actions/workflows/main.yml/badge.svg)](https://github.com/SimonShiki/Typability/actions/workflows/main.yml)
+[![build(nightly)](https://github.com/SimonShiki/Typability/actions/workflows/validate.yml/badge.svg)](https://github.com/SimonShiki/Typability/actions/workflows/validate.yml)
 
 
 <img src="./images/typability-screenshot.png" width="400" />
@@ -18,7 +18,15 @@ a WYSIWYG markdown editor based on [Milkdown](https://milkdown.dev/).
 - [x] 📝 **WYSIWYG Markdown - provides Typora-like seamless Markdown editing experience**
 # 🚧 Todo
 - [ ] Multi-language support
-- [ ] Find/Replace
+- [x] Find/Replace
+- [ ] LaTeX support
+- [ ] More export options
+
+# ☔ System Requirements
+- [x] Windows 7+ (Recommend: Windows 10 1803 +)
+- [x] macOS 11.3+ (Reasons: see [Fluent UI's broswer support matrix](https://react.fluentui.dev/?path=/docs/concepts-developer-browser-support-matrix--page))
+- [x] most Linux distributions (Recommend/Tested: Ubuntu 18.04 +)
+
 # 📦 How to build
 This project is bundled with [tauri](https://tauri.app), You should follow [this guide](https://tauri.app/v1/guides/getting-started/prerequisites/) first.
 ```bash
