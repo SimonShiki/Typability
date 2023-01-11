@@ -13,7 +13,6 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
     Ok(())
 }
 
-#[cfg(target_os = "windows")]
 #[tauri::command]
 pub fn open_emoji_panel() {
     send(&EventType::KeyPress(Key::MetaLeft));
