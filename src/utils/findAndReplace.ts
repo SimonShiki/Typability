@@ -6,6 +6,16 @@ type EndPoint = {
     to: number;
 };
 
+function makeSafeRegExpStr (str: string) {
+    const modifiedStr = str.split('');
+    const indices = [...str.matchAll(/[|\\{}()[\]^$+*?.]/g)].map(a => a.index);
+    if (!indices) return str;
+    for (const index of indices as number[]) {
+        modifiedStr[index] = `\\${modifiedStr[index]}`;
+    }
+    return modifiedStr.join('');
+}
+
 // @todo make it a milkdown plugin
 export class Finder {
     tr: Transaction;
@@ -66,7 +76,7 @@ export class Finder {
             let index = 0, foundAt;
             const ep = this.getNodeEndpoints(this.tr.doc, node);
             if (ep === null) return;
-            while ((foundAt = node.textContent.slice(index).search(new RegExp(findStr, this.caseSensitive ? '' : 'i'))) > -1) {
+            while ((foundAt = node.textContent.slice(index).search(new RegExp(makeSafeRegExpStr(findStr), this.caseSensitive ? '' : 'i'))) > -1) {
                 const sel = TextSelection.create(this.tr.doc, ep.from + index + foundAt + 1, ep.from + index + foundAt + findStr.length + 1);
                 ret.push(sel);
                 index = index + foundAt + findStr.length;
