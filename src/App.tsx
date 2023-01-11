@@ -54,6 +54,9 @@ function App() {
         e.preventDefault();
         setToolbar('find');
     });
+    useKeyPress('f7', (e) => {
+        e.preventDefault();
+    });
     useKeyPress('ctrl.h', () => {
         setToolbar('replace');
     });
