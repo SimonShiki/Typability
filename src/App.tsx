@@ -15,13 +15,23 @@ import { settingsJotai } from "./jotais/settings";
 import { useKeyPress, useInterval, useEventListener, useAsyncEffect, useUpdateLayoutEffect } from "ahooks";
 import { version as getVersion, type as getType } from '@tauri-apps/api/os';
 import About from "./components/About";
+import { save as saveFilePicker } from '@tauri-apps/api/dialog';
+import { documentDir } from '@tauri-apps/api/path';
 import { invoke } from '@tauri-apps/api/tauri';
 import FloatingToolbar from "./components/FloatingToolbar";
 import { Editor } from "@milkdown/core";
 
+const availbleExts = [{
+    name: 'Markdown',
+    extensions: ['md']
+}, {
+    name: 'Text file',
+    extensions: ['txt']
+}];
+
 function App() {
     const [content, setContent] = useAtom(contentJotai);
-    const [filePath] = useAtom(filePathJotai);
+    const [filePath, setFilePath] = useAtom(filePathJotai);
     const [loading] = useAtom(loadingJotai);
     const [, setToolbar] = useAtom(toolbarJotai);
     const [, setSaved] = useAtom(savedJotai);
@@ -49,8 +59,17 @@ function App() {
 
     // Shortcuts
     useKeyPress('ctrl.s', async () => {
-        if (filePath === null) return;
-        await writeTextFile({ path: filePath, contents: content });
+        let selected = filePath ?? '';
+        if (!selected) {
+            const _selected = await saveFilePicker({
+                defaultPath: await documentDir(),
+                filters: availbleExts
+            });
+            if (_selected === null) return;
+            selected = _selected;
+            setFilePath(selected as string);
+        }
+        await writeTextFile({ path: selected, contents: content });
         setSaved(true);
     });
     useKeyPress('ctrl.f', (e) => {

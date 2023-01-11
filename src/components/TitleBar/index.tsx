@@ -6,6 +6,8 @@ import styles from './title-bar.module.scss';
 import { Add20Regular, ArrowDown20Regular, FullScreenMaximize20Regular } from '@fluentui/react-icons';
 import FileMenu from '../FileMenu';
 import EditMenu from '../EditMenu';
+import {  save as saveFilePicker } from '@tauri-apps/api/dialog';
+import { documentDir } from '@tauri-apps/api/path';
 import { useAtom } from 'jotai';
 import { aboutJotai, preferenceJotai } from '../../jotais/ui';
 import { Editor } from '@milkdown/core';
@@ -18,11 +20,19 @@ interface TitleBar {
     };
 }
 
+const availbleExts = [{
+    name: 'Markdown',
+    extensions: ['md']
+}, {
+    name: 'Text file',
+    extensions: ['txt']
+}];
+
 const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
     const [preference] = useAtom(preferenceJotai);
     const [about] = useAtom(aboutJotai);
     const [content] = useAtom(contentJotai);
-    const [filePath] = useAtom(filePathJotai);
+    const [filePath, setFilePath] = useAtom(filePathJotai);
     const [saved] = useAtom(savedJotai);
     return (
         <>
@@ -57,8 +67,19 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
                                     title: 'You haven\'t saved it yet',
                                     type: 'warning'
                                 });
-                                if (result && filePath !== null) {
-                                    await writeTextFile({ path: filePath, contents: content });
+                                
+                                if (result) {
+                                    let selected = filePath ?? '';
+                                    if (!selected) {
+                                        const _selected = await saveFilePicker({
+                                            defaultPath: await documentDir(),
+                                            filters: availbleExts
+                                        });
+                                        if (_selected === null) return;
+                                        selected = _selected;
+                                        setFilePath(selected as string);
+                                    }
+                                    await writeTextFile({ path: selected, contents: content });
                                 } else return;
                             }
                             await appWindow.close();
