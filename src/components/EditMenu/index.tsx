@@ -4,8 +4,15 @@ import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTri
 import { DocumentEdit16Regular } from '@fluentui/react-icons';
 import { useAtom } from 'jotai';
 import { editMenuJotai, toolbarJotai, vibrancyJotai } from '../../jotais/ui';
+import { Editor } from '@milkdown/core';
 
-const EditMenu: React.FC = () => {
+interface EditMenu {
+    editorInstance: {
+        current?: Editor | null;
+    };
+}
+
+const EditMenu: React.FC<EditMenu> = () => {
     const [, setFloatingToolbar] = useAtom(toolbarJotai);
     const [, setEditMenu] = useAtom(editMenuJotai);
     const [vibrancy] = useAtom(vibrancyJotai);

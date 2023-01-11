@@ -9,12 +9,14 @@ type EndPoint = {
 // @todo make it a milkdown plugin
 export class Finder {
     tr: Transaction;
+    caseSensitive: boolean;
     /**
      * Finder to find string in Milkdown/ ProseMirror.
      * @param tr the transaction of the state. You can use ``getInstance().ctx.get(editorViewCtx).state.tr`` to get it.
      */
-    constructor (tr: Transaction) {
+    constructor (tr: Transaction, caseSensitive: boolean) {
         this.tr = tr;
+        this.caseSensitive = caseSensitive;
     }
 
     /**
@@ -64,8 +66,7 @@ export class Finder {
             let index = 0, foundAt;
             const ep = this.getNodeEndpoints(this.tr.doc, node);
             if (ep === null) return;
-            // @todo case-sensitive support
-            while ((foundAt = node.textContent.slice(index).search(new RegExp(findStr, ''))) > -1) {
+            while ((foundAt = node.textContent.slice(index).search(new RegExp(findStr, this.caseSensitive ? '' : 'i'))) > -1) {
                 // Maybe there's more elegant way to create text selection?
                 const sel = new TextSelection(this.tr.doc.resolve(ep.from + index + foundAt + 1), this.tr.doc.resolve(ep.from + index + foundAt + findStr.length + 1));
                 ret.push(sel);

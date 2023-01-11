@@ -87,9 +87,7 @@ function App() {
                     });
                 }
             } else {
-                // Ignore small version
-                const versionNum = parseInt(version.substring(version.indexOf('.') + 1));
-                if (versionNum >= 14) { // macOS 10.14 Mojave
+                if (parseFloat(version) >= 10.14) { // macOS 10.14 Mojave +
                     setVibrancy({
                         arcylic: false,
                         mica: false,
@@ -114,7 +112,7 @@ function App() {
             <div className={classNames(styles.container, {
                 [styles.window]: !settings.vibrancy || settings.vibrancy === 'none'
             })}>
-                <TitleBar />
+                <TitleBar editorInstance={editorInstance} />
                 <div className={styles.editor} spellCheck={false}>
                     <MilkdownEditor
                         useMenu={false}

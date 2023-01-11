@@ -7,8 +7,15 @@ import FileMenu from '../FileMenu';
 import EditMenu from '../EditMenu';
 import { useAtom } from 'jotai';
 import { aboutJotai, preferenceJotai } from '../../jotais/ui';
+import { Editor } from '@milkdown/core';
 
-const TitleBar : React.FC = () => {
+interface TitleBar {
+    editorInstance: {
+        current?: Editor | null;
+    };
+}
+
+const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
     const [preference] = useAtom(preferenceJotai);
     const [about] = useAtom(aboutJotai);
     return (
@@ -18,7 +25,7 @@ const TitleBar : React.FC = () => {
                 <div data-tauri-drag-region className={styles.operation}>
                     <FileMenu />
                     <div style={{ width: '0.5rem' }}></div>
-                    <EditMenu />
+                    <EditMenu editorInstance={editorInstance} />
                 </div>
                 <div className={styles.control}>
                     <Button
