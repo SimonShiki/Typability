@@ -1,23 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { invoke } from '@tauri-apps/api/tauri';
-import { version as getVersion, type as getType } from '@tauri-apps/api/os';
 import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { DocumentEdit16Regular } from '@fluentui/react-icons';
-import { useAsyncEffect } from 'ahooks';
 import { useAtom } from 'jotai';
-import { editMenuJotai, toolbarJotai } from '../../jotais/ui';
+import { editMenuJotai, toolbarJotai, vibrancyJotai } from '../../jotais/ui';
 
 const EditMenu: React.FC = () => {
-    const [emojiAvailable, setEmojiAvailable] = useState<boolean>(false);
     const [, setFloatingToolbar] = useAtom(toolbarJotai);
     const [, setEditMenu] = useAtom(editMenuJotai);
-    useAsyncEffect(async () => {
-        const type = await getType();
-        if (type !== 'Windows_NT') return;
-        const version = await getVersion();
-        const buildNumber = parseInt(version.substring(version.lastIndexOf('.') + 1));
-        if (buildNumber >= 17134) setEmojiAvailable(true);
-    }, []);
+    const [vibrancy] = useAtom(vibrancyJotai);
+
     return (
         <Menu onOpenChange={(e, data) => {
             setEditMenu(data.open);
@@ -41,9 +33,9 @@ const EditMenu: React.FC = () => {
                         setFloatingToolbar('replace');
                     }}>Replace</MenuItem>
                     <MenuItem 
-                        disabled={!emojiAvailable}
+                        disabled={!vibrancy.arcylic}
                         onClick={() => {
-                            if (emojiAvailable) invoke('open_emoji_panel');
+                            if (vibrancy.arcylic) invoke('open_emoji_panel');
                         }}
                     >Emoji & Symbols</MenuItem>
                     <MenuDivider />

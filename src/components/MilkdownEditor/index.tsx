@@ -120,4 +120,6 @@ function areEqual (prevProps: Readonly<MilkdownEditor>, nextProps: Readonly<Milk
     return true;
 }
 
+MilkdownEditor.displayName = 'MilkdownEditor';
+
 export default React.memo(MilkdownEditor, areEqual);

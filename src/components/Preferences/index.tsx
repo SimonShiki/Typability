@@ -18,6 +18,8 @@ import { settingsJotai } from '../../jotais/settings';
 import { Card } from '@fluentui/react-components/unstable';
 import { relaunch } from '@tauri-apps/api/process';
 import { Warning16Regular } from '@fluentui/react-icons';
+import { invoke } from '@tauri-apps/api/tauri';
+import { vibrancyJotai } from '../../jotais/ui';
 
 interface PerferencesProps {
     open: boolean;
@@ -39,11 +41,19 @@ const syntaxMap = {
     commonmark: 'CommonMark'
 };
 
+const vibrancyMap = {
+    none: 'None',
+    arcylic: 'Arcylic',
+    mica: 'Mica',
+    vibrancy: 'Vibrancy'
+};
+
 const Preferences: React.FC<PerferencesProps> = ({
     open,
     onClose
 }) => {
     const [settings, setSettings] = useAtom(settingsJotai);
+    const [vibrancy] = useAtom(vibrancyJotai);
     const [relaunchItem, setRelaunchItem] = useState<{[prop in keyof typeof settings]?: unknown}>({});
     function setSetting (key: keyof typeof settings, value: unknown) {
         setSettings(Object.assign({}, settings, {
@@ -122,12 +132,33 @@ const Preferences: React.FC<PerferencesProps> = ({
                                 Syntax
                             </p>
                             <Dropdown value={syntaxMap[relaunchItem.syntax as keyof typeof syntaxMap ?? settings.syntax]} onOptionSelect={(e, data) => {
-                                // setSetting('syntax', data.optionValue);
                                 if (data.optionValue !== settings.syntax) addRelaunchItem('syntax', data.optionValue);
                                 else deleteRelaunchItem('syntax');
                             }}>
                                 <Option value="commonmark">CommonMark</Option>
                                 <Option value="gfm">GitHub Flavored Markdown</Option>
+                            </Dropdown>
+                        </div>
+                        <div className={styles.option}>
+                            <p className={styles.description}>
+                                Vibrancy
+                            </p>
+                            <Dropdown
+                                value={vibrancyMap[settings.vibrancy]}
+                                onOptionSelect={(e, data) => {
+                                    if (settings.vibrancy === 'mica') invoke('clear_mica');
+                                    else if (settings.vibrancy === 'arcylic') invoke('clear_arcylic');
+
+                                    // window-vibrancy doesn't provide clear_vibrancy right now, so we cannot hot-update it.
+                                    if (data.optionValue === 'vibrancy' || (settings.vibrancy === 'vibrancy' && data.optionValue === 'none')) {
+                                        addRelaunchItem('vibrancy', data.optionValue);
+                                    } else setSetting('vibrancy', data.optionValue);
+                                }}
+                            >
+                                <Option value="none">None</Option>
+                                {vibrancy.arcylic && <Option value="arcylic">Arcylic</Option>}
+                                {vibrancy.mica && <Option value="mica">Mica</Option>}
+                                {vibrancy.vibrancy && <Option value="mica">Vibrancy</Option>}
                             </Dropdown>
                         </div>
                         <div className={styles.option}>

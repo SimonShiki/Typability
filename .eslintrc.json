@@ -1,12 +1,15 @@
 {
     "parser": "@typescript-eslint/parser",
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react"
     ],
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -18,5 +21,10 @@
     "rules": {
         "semi": "error",
         "indent": [2, 4]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
