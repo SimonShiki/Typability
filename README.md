@@ -35,3 +35,6 @@ yarn install # Install dependencies
 yarn tauri dev # Start development server
 yarn tauri build # Bundle App
 ```
+# 🌍 Translation
+
+Typability add i18n support since version 0.3.0. Here is the [Transifex Project](https://www.transifex.com/typability/typability). If you're intersted in translating this project, contact me please!
