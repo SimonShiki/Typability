@@ -16,7 +16,6 @@ import styles from './preferences.module.scss';
 import { useAtom } from 'jotai';
 import { settingsJotai } from '../../jotais/settings';
 import { Card } from '@fluentui/react-components/unstable';
-import { relaunch } from '@tauri-apps/api/process';
 import { Warning16Regular } from '@fluentui/react-icons';
 import { invoke } from '@tauri-apps/api/tauri';
 import { vibrancyJotai } from '../../jotais/ui';
@@ -64,9 +63,9 @@ const Preferences: React.FC<PerferencesProps> = ({
         delete modifiedRelaunchItem[key];
         setRelaunchItem(modifiedRelaunchItem);
     }
-    async function relaunchApply () {
+    function relaunchApply () {
         setSettings(Object.assign({}, settings, relaunchItem));
-        await relaunch();
+        location.reload();
     }
     return (
         <Dialog open={open}>

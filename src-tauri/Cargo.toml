@@ -1,5 +1,5 @@
 [package]
-name = "Typability"
+name = "typability"
 version = "0.2.0"
 description = "a WYSIWYG markdown editor based on Milkdown."
 authors = ["SimonShiki"]
@@ -14,7 +14,7 @@ rust-version = "1.57"
 tauri-build = { version = "1.2", features = [] }
 
 [dependencies]
-tauri = { version = "1.2", features = ["app-all", "dialog-all", "fs-all", "os-all", "path-all", "window-all"] }
+tauri = { version = "1.2", features = ["app-all", "dialog-all", "fs-all", "os-all", "path-all", "process-relaunch-dangerous-allow-symlink-macos", "window-all"] }
 window-vibrancy = "0.3.2"
 window-shadows = "0.2.1"
 
@@ -27,6 +27,8 @@ window-shadows = "0.2.1"
 custom-protocol = ["tauri/custom-protocol"]
 
 [profile.release]
+panic = "abort" # Strip expensive panic clean-up logic
 opt-level = "z"  # Optimize for size.
 codegen-units = 1
 strip = true  # Automatically strip symbols from the binary.
+lto = true # Enables link to optimizations

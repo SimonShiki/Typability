@@ -22,7 +22,7 @@ export default defineConfig({
     envPrefix: ["VITE_", "TAURI_"],
     build: {
     // Tauri supports es2021
-        target: process.env.TAURI_PLATFORM === "windows" ? "chrome105" : "safari13",
+        target: process.env.TAURI_PLATFORM === "windows" ? "chrome105" : "safari14", // See https://react.fluentui.dev/?path=/docs/concepts-developer-browser-support-matrix--page
         // Don't minify for debug builds
         minify: !process.env.TAURI_DEBUG ? "esbuild" : false,
         // Produce sourcemaps for debug builds

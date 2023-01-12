@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useLayoutEffect } from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import { Editor, rootCtx, defaultValueCtx } from '@milkdown/core';
 import { nord, nordDark } from '@milkdown/theme-nord';
 import { ReactEditor, useEditor } from '@milkdown/react';
@@ -9,10 +9,17 @@ import { menu } from '@milkdown/plugin-menu';
 import '@material-design-icons/font';
 import { history } from '@milkdown/plugin-history';
 import { replaceAll, switchTheme } from '@milkdown/utils';
-import { prism } from '@milkdown/plugin-prism';
+import { prismPlugin } from '@milkdown/plugin-prism';
 import { clipboard } from '@milkdown/plugin-clipboard';
 import { tokyo } from '@milkdown/theme-tokyo';
+import { diagram } from '@milkdown/plugin-diagram';
+import { block } from '@milkdown/plugin-block';
 import { listener, listenerCtx } from '@milkdown/plugin-listener';
+import { useUpdateEffect } from 'ahooks';
+import { refractor } from 'refractor/lib/common';
+import { math } from '@milkdown/plugin-math';
+import { cursor } from '@milkdown/plugin-cursor';
+import 'katex/dist/katex.min.css';
 
 interface MilkdownEditor {
     content: string;
@@ -48,6 +55,27 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
     theme = 'nord',
     onMarkdownUpdated,
 }, ref) => {
+    useEffect(() => {
+        if (ref) {
+            if (typeof ref === 'function') ref(getInstance() ?? null);
+            else ref.current = getInstance() ?? null;
+        }
+    });
+
+    useUpdateEffect(() => {
+        if (!loading) {
+            const instance = getInstance();
+            if (content !== currentContent) {
+                instance?.action(replaceAll(content));
+                currentContent = content;
+            }
+            if (theme !== currentTheme) {
+                instance?.action(switchTheme(themeMap[theme]));
+                currentTheme = theme;
+            }
+        }
+    }, [content, theme, syntaxOption]);
+
     const { editor, loading, getInstance } = useEditor((root) => {
         currentContent = content;
         currentTheme = theme;
@@ -63,39 +91,24 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
                     });
                 }
 
-            }).use(history)
+            }).use(syntaxMap[syntaxOption])
             .use(listener)
-            .use(tooltip)
-            .use(themeMap[theme])
-            .use(prism)
+            .use(prismPlugin({
+                configureRefractor: () => refractor
+            }))
             .use(clipboard)
-            .use(syntaxMap[syntaxOption]);
+            .use(history)
+            .use(cursor)
+            .use(math)
+            .use(tooltip)
+            .use(diagram)
+            .use(themeMap[theme])
+            .use(block);
 
         if (useMenu) instance.use(menu);
 
         return instance;
     });
-
-    useEffect(() => {
-        if (ref) {
-            if (typeof ref === 'function') ref(getInstance() ?? null);
-            else ref.current = getInstance() ?? null;
-        }
-    });
-
-    useLayoutEffect(() => {
-        if (!loading) {
-            const instance = getInstance();
-            if (content !== currentContent) {
-                instance?.action(replaceAll(content));
-                currentContent = content;
-            }
-            if (theme !== currentTheme) {
-                instance?.action(switchTheme(themeMap[theme]));
-                currentTheme = theme;
-            }
-        }
-    }, [content, theme, syntaxOption]);
 
     return <ReactEditor editor={editor} />;
 });
