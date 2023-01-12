@@ -13,8 +13,6 @@ import { prism } from '@milkdown/plugin-prism';
 import { clipboard } from '@milkdown/plugin-clipboard';
 import { tokyo } from '@milkdown/theme-tokyo';
 import { listener, listenerCtx } from '@milkdown/plugin-listener';
-import 'katex/dist/katex.min.css';
-
 
 interface MilkdownEditor {
     content: string;
