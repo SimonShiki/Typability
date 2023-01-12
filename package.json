@@ -10,8 +10,7 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "prepare": "husky install",
-    "i18n:extract": "formatjs extract --ignore=\"**/*.d.ts\" --out-file locale/en.json --format simple \"src/**/*.{ts,tsx}\"",
-    "i18n:compile": "formatjs compile lang.json --out-file locale/en.json"
+    "i18n:extract": "formatjs extract --ignore=\"**/*.d.ts\" --out-file locale/en.json --format simple \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@fluentui/react-components": "^9.8.0",

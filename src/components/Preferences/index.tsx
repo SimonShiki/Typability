@@ -197,7 +197,7 @@ const Preferences: React.FC<PerferencesProps> = ({
                                     </Option>
                                 )}
                                 {vibrancy.vibrancy && (
-                                    <Option value="mica">
+                                    <Option value="vibrancy">
                                         {intl.formatMessage({
                                             id: 'preferences.windowStyle.vibrancy',
                                             defaultMessage: 'Vibrancy'
