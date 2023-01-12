@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { appWindow } from '@tauri-apps/api/window';
 import { confirm } from '@tauri-apps/api/dialog';
 import { Button } from '@fluentui/react-components';
@@ -13,6 +13,7 @@ import { aboutJotai, preferenceJotai } from '../../jotais/ui';
 import { Editor } from '@milkdown/core';
 import { contentJotai, filePathJotai, savedJotai } from '../../jotais/file';
 import { writeTextFile } from '@tauri-apps/api/fs';
+import { useIntl } from 'react-intl';
 
 interface TitleBar {
     editorInstance: {
@@ -34,9 +35,22 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
     const [content] = useAtom(contentJotai);
     const [filePath, setFilePath] = useAtom(filePathJotai);
     const [saved] = useAtom(savedJotai);
+    const titleBarRef = useRef<HTMLDivElement>(null);
+    const intl = useIntl();
+    const disableMenu = (e: MouseEvent) => {
+        e.preventDefault();
+    };
+    useEffect(() => {
+        if (!titleBarRef.current) return;
+        titleBarRef.current.addEventListener('contextmenu', disableMenu);
+        return () => {
+            if (!titleBarRef.current) return;
+            titleBarRef.current.removeEventListener('contextmenu', disableMenu);
+        };
+    }, []);
     return (
         <>
-            <div data-tauri-drag-region className={styles.bar}>
+            <div data-tauri-drag-region className={styles.bar} ref={titleBarRef} >
                 <div data-tauri-drag-region className={styles.title}>Typability</div>
                 <div data-tauri-drag-region className={styles.operation}>
                     <FileMenu />
@@ -63,8 +77,14 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
                         icon={<Add20Regular className={styles.close} />}
                         onClick={async () => {
                             if (!saved) {
-                                const result = await confirm('Do you need to save and then exit?', {
-                                    title: 'You haven\'t saved it yet',
+                                const result = await confirm(intl.formatMessage({
+                                    id: 'closeDialog.title',
+                                    defaultMessage: 'Do you need to save and then exit?'
+                                }), {
+                                    title: intl.formatMessage({
+                                        id: 'closeDialog.content',
+                                        defaultMessage: 'You haven\'t saved it yet'
+                                    }),
                                     type: 'warning'
                                 });
                                 

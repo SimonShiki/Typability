@@ -2,7 +2,8 @@
     "parser": "@typescript-eslint/parser",
     "plugins": [
         "@typescript-eslint",
-        "react"
+        "react",
+        "formatjs"
     ],
     "extends": [
         "eslint:recommended",
@@ -20,7 +21,32 @@
     },
     "rules": {
         "semi": "error",
-        "indent": [2, 4]
+        "indent": ["error", 4],
+        "formatjs/enforce-default-message": [
+            "error",
+            "literal"
+        ],
+        "formatjs/enforce-placeholders": "error",
+        "dot-notation": "error",
+        "block-scoped-var": "error",
+        "capitalized-comments": "warn",
+        "eqeqeq": "error",
+        "multiline-comment-style": ["error", "starred-block"],
+        "no-confusing-arrow": ["error"],
+        "no-else-return": "error",
+        "no-lonely-if": "error",
+        "no-useless-constructor": "error",
+        "no-useless-return": "error",
+        "no-var": "error",
+        "comma-spacing": "error",
+        "func-call-spacing": "error",
+        "dot-location": ["error", "property"],
+        "no-whitespace-before-property": "error",
+        "space-before-function-paren": "error",
+        "space-unary-ops": ["error", {
+            "words": true,
+            "nonwords": false
+        }]
     },
     "settings": {
         "react": {

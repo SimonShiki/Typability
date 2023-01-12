@@ -63,9 +63,9 @@ export class Finder {
                 offset += context.content.child(i).nodeSize;
             }
             return null;
-        } else {
-            return null;
-        }
+        } 
+        return null;
+        
     }
 
     // Referenced from the https://github.com/mattberkowitz/prosemirror-find-replace implementation

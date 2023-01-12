@@ -17,10 +17,11 @@ a WYSIWYG markdown editor based on [Milkdown](https://milkdown.dev/).
 - [x] **🪶 Lightweight - Bundle with tauri for smaller installer size and memory usage**
 - [x] 📝 **WYSIWYG Markdown - provides Typora-like seamless Markdown editing experience**
 # 🚧 Todo
-- [ ] Multi-language support
+- [x] Multi-language support
 - [x] Find/Replace
 - [ ] LaTeX support
 - [ ] More export options
+- [ ] Two-column editor
 
 # ☔ System Requirements
 - [x] Windows 7+ (Recommend: Windows 10 1803 +)

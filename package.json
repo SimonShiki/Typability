@@ -9,7 +9,9 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "preview": "vite preview",
     "tauri": "tauri",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "i18n:extract": "formatjs extract --ignore=\"**/*.d.ts\" --out-file locale/en.json --format simple \"src/**/*.{ts,tsx}\"",
+    "i18n:compile": "formatjs compile lang.json --out-file locale/en.json"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.8.0",
@@ -36,9 +38,12 @@
     "jotai": "^1.12.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-intl": "^6.2.5",
     "showdown": "^2.1.0"
   },
   "devDependencies": {
+    "@formatjs/cli": "^5.1.12",
+    "@formatjs/ts-transformer": "^3.11.5",
     "@tauri-apps/cli": "^1.2.2",
     "@types/node": "^18.7.10",
     "@types/react": "^18.0.15",
@@ -48,6 +53,7 @@
     "@typescript-eslint/parser": "^5.48.0",
     "@vitejs/plugin-react-swc": "^3.0.1",
     "eslint": "^8.31.0",
+    "eslint-plugin-formatjs": "^4.3.9",
     "eslint-plugin-react": "^7.31.11",
     "husky": "^8.0.3",
     "sass": "^1.57.1",

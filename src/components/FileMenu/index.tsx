@@ -7,6 +7,7 @@ import { documentDir } from '@tauri-apps/api/path';
 import { contentJotai, filePathJotai, savedJotai } from '../../jotais/file';
 import { writeTextFile } from '@tauri-apps/api/fs';
 import { aboutJotai, preferenceJotai } from '../../jotais/ui';
+import { FormattedMessage } from 'react-intl';
 import * as showdown from 'showdown';
 
 const availbleExts = [{
@@ -24,7 +25,7 @@ const availbleExportExts = [{
 
 const FileMenu: React.FC = () => {
     const [filePath, setFilePath] = useAtom(filePathJotai);
-    const [,setContent] = useAtom(contentJotai);
+    const [, setContent] = useAtom(contentJotai);
     const [, setPreference] = useAtom(preferenceJotai);
     const [, setAbout] = useAtom(aboutJotai);
     const [, setSaved] = useAtom(savedJotai);
@@ -37,7 +38,10 @@ const FileMenu: React.FC = () => {
                     appearance="subtle"
                     icon={<Folder16Regular />}
                 >
-                    File
+                    <FormattedMessage
+                        id='menu.file.title'
+                        defaultMessage='File'
+                    />
                 </MenuButton>
             </MenuTrigger>
 
@@ -46,7 +50,12 @@ const FileMenu: React.FC = () => {
                     <MenuItem onClick={async () => {
                         setFilePath(null);
                         setContent('');
-                    }}>New</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.file.new'
+                            defaultMessage='New'
+                        />
+                    </MenuItem>
                     <MenuItem onClick={async () => {
                         const selected = await openFilePicker({
                             defaultPath: await documentDir(),
@@ -55,12 +64,22 @@ const FileMenu: React.FC = () => {
                         if (selected === null) return;
                         setFilePath(selected as string);
 
-                    }}>Open</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.file.open'
+                            defaultMessage='Open'
+                        />
+                    </MenuItem>
                     <MenuItem disabled={filePath === null} onClick={async () => {
                         if (filePath === null) return;
 
                         await writeTextFile({ path: filePath, contents: content });
-                    }}>Save</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.file.save'
+                            defaultMessage='Save'
+                        />
+                    </MenuItem>
                     <MenuItem onClick={async () => {
                         const selected = await saveFilePicker({
                             defaultPath: await documentDir(),
@@ -72,7 +91,12 @@ const FileMenu: React.FC = () => {
                         setSaved(true);
 
                         setFilePath(selected as string);
-                    }}>Save As</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.file.saveAs'
+                            defaultMessage='Save as'
+                        />
+                    </MenuItem>
                     <MenuDivider />
                     <MenuItem onClick={async () => {
                         const selected = await saveFilePicker({
@@ -90,13 +114,28 @@ const FileMenu: React.FC = () => {
                             await writeTextFile({ path: selected as string, contents: converter.makeHtml(content) });
                             break;
                         }
-                    }}>Export</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.file.export'
+                            defaultMessage='Export'
+                        />
+                    </MenuItem>
                     <MenuItem onClick={() => {
                         setPreference(true);
-                    }}>Preferences</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.file.preference'
+                            defaultMessage='Preference'
+                        />
+                    </MenuItem>
                     <MenuItem onClick={() => {
                         setAbout(true);
-                    }}>About</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.file.about'
+                            defaultMessage='About'
+                        />
+                    </MenuItem>
                 </MenuList>
             </MenuPopover>
         </Menu>

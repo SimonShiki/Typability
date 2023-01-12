@@ -20,6 +20,8 @@ import { documentDir } from '@tauri-apps/api/path';
 import { invoke } from '@tauri-apps/api/tauri';
 import FloatingToolbar from "./components/FloatingToolbar";
 import { Editor } from "@milkdown/core";
+import { IntlProvider } from 'react-intl';
+import localeData from '../locale';
 
 const availbleExts = [{
     name: 'Markdown',
@@ -29,7 +31,7 @@ const availbleExts = [{
     extensions: ['txt']
 }];
 
-function App() {
+function App () {
     const [content, setContent] = useAtom(contentJotai);
     const [filePath, setFilePath] = useAtom(filePathJotai);
     const [loading] = useAtom(loadingJotai);
@@ -91,35 +93,35 @@ function App() {
     useAsyncEffect(async () => {
         const type = await getType();
         if (type === 'Linux') return;
-        else {
-            const version = await getVersion();
-            if (type === 'Windows_NT') {
-                const buildNumber = parseInt(version.substring(version.lastIndexOf('.') + 1));
-                if (buildNumber >= 21996) { // Windows 11
-                    setVibrancy({
-                        arcylic: true,
-                        mica: true,
-                        vibrancy: false
-                    });
-                } else if (buildNumber >= 17134) { // Windows 10 1803
-                    setVibrancy({
-                        arcylic: true,
-                        mica: false,
-                        vibrancy: false
-                    });
-                }
-            } else {
-                /*
-                 * FluentUI doesn't work on macOS 11.3 - (Safari 14.1 -)
-                 * For vibrancy feature(macOS 10.14 +), there's no need to detect version.
-                */
+        
+        const version = await getVersion();
+        if (type === 'Windows_NT') {
+            const buildNumber = parseInt(version.substring(version.lastIndexOf('.') + 1));
+            if (buildNumber >= 21996) { // Windows 11
                 setVibrancy({
-                    arcylic: false,
+                    arcylic: true,
+                    mica: true,
+                    vibrancy: false
+                });
+            } else if (buildNumber >= 17134) { // Windows 10 1803
+                setVibrancy({
+                    arcylic: true,
                     mica: false,
-                    vibrancy: true
+                    vibrancy: false
                 });
             }
+        } else {
+            /*
+             * FluentUI doesn't work on macOS 11.3 - (Safari 14.1 -)
+             * For vibrancy feature(macOS 10.14 +), there's no need to detect version.
+             */
+            setVibrancy({
+                arcylic: false,
+                mica: false,
+                vibrancy: true
+            });
         }
+        
     }, []);
 
     // Read text file from path if filePath changed
@@ -134,38 +136,40 @@ function App() {
 
     return (
         <FluentProvider theme={isDarkMode ? webDarkTheme : webLightTheme} className='provider'>
-            <div className={classNames(styles.container, {
-                [styles.window]: !settings.vibrancy || settings.vibrancy === 'none'
-            })}>
-                <TitleBar editorInstance={editorInstance} />
-                <div className={styles.editor} spellCheck={false}>
-                    <MilkdownEditor
-                        useMenu={false}
-                        content={content}
-                        onMarkdownUpdated={(markdown) => {
-                            setContent(markdown);
-                        }}
-                        syntaxOption={settings.syntax}
-                        theme={isDarkMode ? settings.themeDark : settings.theme}
-                        ref={editorInstance}
-                    />
+            <IntlProvider defaultLocale='en' locale={settings.language} messages={localeData[settings.language].message}>
+                <div className={classNames(styles.container, {
+                    [styles.window]: !settings.vibrancy || settings.vibrancy === 'none'
+                })}>
+                    <TitleBar editorInstance={editorInstance} />
+                    <div className={styles.editor} spellCheck={false}>
+                        <MilkdownEditor
+                            useMenu={false}
+                            content={content}
+                            onMarkdownUpdated={(markdown) => {
+                                setContent(markdown);
+                            }}
+                            syntaxOption={settings.syntax}
+                            theme={isDarkMode ? settings.themeDark : settings.theme}
+                            ref={editorInstance}
+                        />
+                    </div>
+                    <div
+                        data-tauri-drag-region
+                        className={classNames(styles.mask, {
+                            [styles.white]: loading
+                        })}
+                    >
+                        <Spinner />
+                    </div>
+                    <Preferences open={preference} onClose={() => {
+                        setPreference(false);
+                    }} />
+                    <About open={about} onClose={() => {
+                        setAbout(false);
+                    }} />
+                    <FloatingToolbar editorInstance={editorInstance} />
                 </div>
-                <div
-                    data-tauri-drag-region
-                    className={classNames(styles.mask, {
-                        [styles.white]: loading
-                    })}
-                >
-                    <Spinner />
-                </div>
-                <Preferences open={preference} onClose={() => {
-                    setPreference(false);
-                }} />
-                <About open={about} onClose={() => {
-                    setAbout(false);
-                }} />
-                <FloatingToolbar editorInstance={editorInstance} />
-            </div>
+            </IntlProvider>
         </FluentProvider>
     );
 }

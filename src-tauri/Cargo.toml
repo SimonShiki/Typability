@@ -19,8 +19,6 @@ serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.2", features = ["app-all", "dialog-all", "fs-all", "os-all", "path-all", "window-all"] }
 window-vibrancy = "0.3.2"
 window-shadows = "0.2.1"
-os_info = "3.5.1"
-rdev = "0.5.2"
 
 [features]
 # by default Tauri runs in production mode

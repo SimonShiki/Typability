@@ -1,10 +1,10 @@
 import React from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
 import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { DocumentEdit16Regular } from '@fluentui/react-icons';
 import { useAtom } from 'jotai';
-import { editMenuJotai, toolbarJotai, vibrancyJotai } from '../../jotais/ui';
+import { editMenuJotai, toolbarJotai } from '../../jotais/ui';
 import { Editor } from '@milkdown/core';
+import { FormattedMessage } from 'react-intl';
 
 interface EditMenu {
     editorInstance: {
@@ -15,7 +15,6 @@ interface EditMenu {
 const EditMenu: React.FC<EditMenu> = () => {
     const [, setFloatingToolbar] = useAtom(toolbarJotai);
     const [, setEditMenu] = useAtom(editMenuJotai);
-    const [vibrancy] = useAtom(vibrancyJotai);
 
     return (
         <Menu onOpenChange={(e, data) => {
@@ -27,28 +26,49 @@ const EditMenu: React.FC<EditMenu> = () => {
                     appearance="subtle"
                     icon={<DocumentEdit16Regular />}
                 >
-                    Edit
+                    <FormattedMessage
+                        id='menu.edit.title'
+                        defaultMessage='Edit'
+                    />
                 </MenuButton>
             </MenuTrigger>
-
             <MenuPopover>
                 <MenuList>
                     <MenuItem onClick={() => {
                         setFloatingToolbar('find');
-                    }}>Find</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.edit.find'
+                            defaultMessage='Find'
+                        />
+                    </MenuItem>
                     <MenuItem onClick={() => {
                         setFloatingToolbar('replace');
-                    }}>Replace</MenuItem>
-                    <MenuItem 
-                        disabled={!vibrancy.arcylic}
-                        onClick={() => {
-                            if (vibrancy.arcylic) invoke('open_emoji_panel');
-                        }}
-                    >Emoji & Symbols</MenuItem>
+                    }}>
+                        <FormattedMessage
+                            id='menu.edit.replace'
+                            defaultMessage='Replace'
+                        />
+                    </MenuItem>
                     <MenuDivider />
-                    <MenuItem>Add table</MenuItem>
-                    <MenuItem>Add diagram</MenuItem>
-                    <MenuItem>Add math block</MenuItem>
+                    <MenuItem>
+                        <FormattedMessage
+                            id='menu.edit.addTable'
+                            defaultMessage='Add table'
+                        />
+                    </MenuItem>
+                    <MenuItem>
+                        <FormattedMessage
+                            id='menu.edit.addDiagram'
+                            defaultMessage='Add diagram'
+                        />
+                    </MenuItem>
+                    <MenuItem>
+                        <FormattedMessage
+                            id='menu.edit.addFormula'
+                            defaultMessage='Add formula'
+                        />
+                    </MenuItem>
                 </MenuList>
             </MenuPopover>
         </Menu>
