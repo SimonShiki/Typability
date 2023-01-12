@@ -100,7 +100,7 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
                                         setFilePath(selected as string);
                                     }
                                     await writeTextFile({ path: selected, contents: content });
-                                };
+                                }
                             }
                             await appWindow.close();
                         }}
