@@ -19,7 +19,7 @@ a WYSIWYG markdown editor based on [Milkdown](https://milkdown.dev/).
 # 🚧 Todo
 - [x] Multi-language support
 - [x] Find/Replace
-- [ ] LaTeX support
+- [x] LaTeX support
 - [ ] More export options
 - [ ] Two-column editor
 

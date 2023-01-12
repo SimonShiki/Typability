@@ -86,8 +86,10 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
                 const listener = ctx.get(listenerCtx);
                 if (onMarkdownUpdated) {
                     listener.markdownUpdated((ctx, markdown, prevMarkdown) => {
+                        if (markdown === prevMarkdown) return;
+                        // Don't trigger when editor is initializing
+                        if (prevMarkdown !== null) onMarkdownUpdated(markdown, prevMarkdown);
                         currentContent = markdown;
-                        onMarkdownUpdated(markdown, prevMarkdown);
                     });
                 }
 

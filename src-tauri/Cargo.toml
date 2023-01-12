@@ -1,6 +1,6 @@
 [package]
 name = "typability"
-version = "0.2.0"
+version = "0.3.0"
 description = "a WYSIWYG markdown editor based on Milkdown."
 authors = ["SimonShiki"]
 license = ""
@@ -11,10 +11,10 @@ rust-version = "1.57"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "1.2", features = [] }
+tauri-build = { version = "1.2.1", features = [] }
 
 [dependencies]
-tauri = { version = "1.2", features = ["app-all", "dialog-all", "fs-all", "os-all", "path-all", "process-relaunch-dangerous-allow-symlink-macos", "window-all"] }
+tauri = { version = "1.2.3", features = ["app-all", "dialog-all", "fs-all", "os-all", "path-all", "process-relaunch-dangerous-allow-symlink-macos", "window-all"] }
 window-vibrancy = "0.3.2"
 window-shadows = "0.2.1"
 
