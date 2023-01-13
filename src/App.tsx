@@ -6,13 +6,13 @@ import { contentJotai, filePathJotai, savedJotai } from "./jotais/file";
 import { aboutJotai, loadingJotai, preferenceJotai, toolbarJotai, vibrancyJotai } from "./jotais/ui";
 import classNames from "classnames";
 import { Spinner } from "@fluentui/react-components";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { FluentProvider, webLightTheme, webDarkTheme } from '@fluentui/react-components';
 import useIsDarkMode from "./hooks/dark";
 import Preferences from "./components/Preferences";
 import { writeTextFile, readTextFile } from '@tauri-apps/api/fs';
 import { settingsJotai } from "./jotais/settings";
-import { useKeyPress, useInterval, useEventListener, useAsyncEffect, useUpdateLayoutEffect } from "ahooks";
+import { useKeyPress, useInterval, useEventListener, useAsyncEffect } from "ahooks";
 import { version as getVersion, type as getType } from '@tauri-apps/api/os';
 import About from "./components/About";
 import { save as saveFilePicker } from '@tauri-apps/api/dialog';
@@ -36,7 +36,7 @@ function App () {
     const [filePath, setFilePath] = useAtom(filePathJotai);
     const [loading] = useAtom(loadingJotai);
     const [, setToolbar] = useAtom(toolbarJotai);
-    const [, setSaved] = useAtom(savedJotai);
+    const [saved, setSaved] = useAtom(savedJotai);
     const [settings] = useAtom(settingsJotai);
     const [preference, setPreference] = useAtom(preferenceJotai);
     const [, setVibrancy] = useAtom(vibrancyJotai);
@@ -44,56 +44,11 @@ function App () {
     const isDarkMode = useIsDarkMode();
     const editorInstance = useRef<Editor>(null);
 
-    // Auto save
-    useInterval(async () => {
-        if (filePath === null) return;
-        await writeTextFile({ path: filePath, contents: content });
-        setSaved(true);
-
-    }, settings.autoSave ? settings.saveInterval * 1000 : -1);
-
-    // Save when editor blurred
-    useEventListener('blur', async () => {
-        if (!settings.saveBlur || filePath === null) return;
-        await writeTextFile({ path: filePath, contents: content });
-        setSaved(true);
-    });
-
-    // Shortcuts
-    useKeyPress('ctrl.s', async () => {
-        let selected = filePath ?? '';
-        if (!selected) {
-            const _selected = await saveFilePicker({
-                defaultPath: await documentDir(),
-                filters: availbleExts
-            });
-            if (_selected === null) return;
-            selected = _selected;
-            setFilePath(selected as string);
-        }
-        await writeTextFile({ path: selected, contents: content });
-        setSaved(true);
-    });
-    useKeyPress('ctrl.f', (e) => {
-        e.preventDefault();
-        setToolbar('find');
-    });
-    useKeyPress('f7', (e) => {
-        e.preventDefault();
-    });
-    useKeyPress('ctrl.h', () => {
-        setToolbar('replace');
-    });
-
-    useEffect(() => {
-        invoke(`apply_${settings.vibrancy}`);
-    }, [settings.vibrancy]);
-
-    // Ensure os info
+    // Initialize
     useAsyncEffect(async () => {
         const type = await getType();
         if (type === 'Linux') return;
-        
+
         const version = await getVersion();
         if (type === 'Windows_NT') {
             const buildNumber = parseInt(version.substring(version.lastIndexOf('.') + 1));
@@ -121,15 +76,68 @@ function App () {
                 vibrancy: true
             });
         }
-        
+
+        const args: string[] = await invoke('get_args');
+        if (args.length > 1) setFilePath(args[1]);
     }, []);
 
+    // Auto save
+    useInterval(async () => {
+        if (filePath === null || saved) return;
+        await writeTextFile({ path: filePath, contents: content });
+        setSaved(true);
+
+    }, settings.autoSave ? settings.saveInterval * 1000 : -1);
+
+    // Save when editor blurred
+    useEventListener('blur', async () => {
+        if (!settings.saveBlur || filePath === null || saved) return;
+        await writeTextFile({ path: filePath, contents: content });
+        setSaved(true);
+    });
+
+    // Shortcuts
+    useKeyPress('ctrl.s', async () => {
+        let selected = filePath ?? '';
+        if (!selected) {
+            const _selected = await saveFilePicker({
+                defaultPath: await documentDir(),
+                filters: availbleExts
+            });
+            if (_selected === null) return;
+            selected = _selected;
+            setFilePath(selected as string);
+        }
+        await writeTextFile({ path: selected, contents: content });
+        setSaved(true);
+    });
+    useKeyPress('ctrl.f', (e) => {
+        e.preventDefault();
+        setToolbar('find');
+    });
+    useKeyPress('f5, f7', (e) => {
+        e.preventDefault();
+    });
+    useKeyPress('ctrl.h', () => {
+        setToolbar('replace');
+    });
+
+    useKeyPress('ctrl.alt.d', () => {
+        alert(`filePath: ${filePath}\nsettings: ${JSON.stringify(settings)}\ncontent: ${content}`);
+    });
+
+    useEffect(() => {
+        invoke(`apply_${settings.vibrancy}`);
+    }, [settings.vibrancy]);
+
     // Read text file from path if filePath changed
-    useUpdateLayoutEffect(() => {
+    useLayoutEffect(() => {
         if (filePath !== null) {
             readTextFile(filePath).then((text) => {
                 setContent(text as string);
                 setSaved(true);
+            }).catch(e => {
+                alert(`Cannot open file: ${e.message}`);
             });
         }
     }, [filePath]);

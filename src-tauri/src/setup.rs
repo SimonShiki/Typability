@@ -46,6 +46,12 @@ pub fn clear_arcylic(window: tauri::Window) {
         .expect("Unsupported platform! 'clear_arcylic' is only supported on Windows 10.0.17134");
 }
 
+#[tauri::command]
+pub fn get_args() -> Result<Vec<String>, ()> {
+  let system_args: Vec<String> = std::env::args().collect();
+  Ok(system_args)
+}
+
 #[cfg(target_os = "windows")]
 pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>> {
     let win = app.get_window("main").unwrap();

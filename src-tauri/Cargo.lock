@@ -2723,8 +2723,10 @@ dependencies = [
 
 [[package]]
 name = "typability"
-version = "0.3.0"
+version = "0.3.2"
 dependencies = [
+ "serde",
+ "serde_json",
  "tauri",
  "tauri-build",
  "window-shadows",

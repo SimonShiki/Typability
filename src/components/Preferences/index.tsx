@@ -171,7 +171,7 @@ const Preferences: React.FC<PerferencesProps> = ({
                                     // Window-vibrancy doesn't provide clear_vibrancy right now, so we cannot hot-update it.
                                     if (data.optionValue === 'vibrancy' || (settings.vibrancy === 'vibrancy' && data.optionValue === 'none')) {
                                         addRelaunchItem('vibrancy', data.optionValue);
-                                    } else setSetting('vibrancy', data.optionValue);
+                                    } else deleteRelaunchItem('vibrancy');
                                 }}
                             >
                                 <Option value="none">

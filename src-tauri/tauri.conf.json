@@ -13,7 +13,8 @@
     "allowlist": {
       "all": false,
       "fs":{
-        "all": true
+        "all": true,
+        "scope": ["**"]
       },
       "os":{
         "all": true
@@ -64,6 +65,7 @@
         "digestAlgorithm": "sha256",
         "timestampUrl": "",
         "wix": {
+          "template": "wix-assets/main.wxs",
           "bannerPath": "wix-assets/banner.png",
           "dialogImagePath": "wix-assets/dialog.png",
           "license": "../LICENSE"
