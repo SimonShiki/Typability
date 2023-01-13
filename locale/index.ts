@@ -1,5 +1,5 @@
-import zhCN from './zh-cn.json';
-import zhTW from './zh-tw.json';
+import zhCN from './zh-CN.json';
+import zhTW from './zh-TW.json';
 import en from './en.json';
 
 const msg = {

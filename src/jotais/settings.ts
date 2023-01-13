@@ -1,7 +1,8 @@
 import { atomWithStorage } from "jotai/utils";
+import availableLanguage from '../../locale';
 
 interface Setting {
-    language: 'en'; // TODO: use react-intl instead
+    language: keyof typeof availableLanguage;
     theme: 'nord' | 'nordDark' | 'tokyo';
     themeDark: 'nord' | 'nordDark' | 'tokyo';
     syntax: 'gfm' | 'commonmark';
@@ -13,7 +14,7 @@ interface Setting {
 }
 
 export const settingsJotai = atomWithStorage<Setting>('settings', {
-    language: 'en',
+    language: navigator.language.toLocaleLowerCase() as keyof typeof availableLanguage,
     theme: 'nord',
     themeDark: 'nordDark',
     syntax: 'gfm',
