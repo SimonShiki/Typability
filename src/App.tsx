@@ -115,7 +115,7 @@ function App () {
         e.preventDefault();
         setToolbar('find');
     });
-    useKeyPress('f5, f7', (e) => {
+    useKeyPress(['f5', 'f7'], (e) => {
         e.preventDefault();
     });
     useKeyPress('ctrl.h', () => {
@@ -127,7 +127,7 @@ function App () {
     });
 
     useEffect(() => {
-        invoke(`apply_${settings.vibrancy}`);
+        if (settings.vibrancy !== 'none') invoke(`apply_${settings.vibrancy}`);
     }, [settings.vibrancy]);
 
     // Read text file from path if filePath changed

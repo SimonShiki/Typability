@@ -169,9 +169,13 @@ const Preferences: React.FC<PerferencesProps> = ({
                                     else if (settings.vibrancy === 'arcylic') invoke('clear_arcylic');
 
                                     // Window-vibrancy doesn't provide clear_vibrancy right now, so we cannot hot-update it.
-                                    if (data.optionValue === 'vibrancy' || (settings.vibrancy === 'vibrancy' && data.optionValue === 'none')) {
+                                    if (data.optionValue === 'vibrancy') {
                                         addRelaunchItem('vibrancy', data.optionValue);
-                                    } else deleteRelaunchItem('vibrancy');
+                                    } else if (settings.vibrancy === 'vibrancy' && data.optionValue === 'none') {
+                                        deleteRelaunchItem('vibrancy');
+                                    } else {
+                                        setSetting('vibrancy', data.optionValue);
+                                    }
                                 }}
                             >
                                 <Option value="none">
