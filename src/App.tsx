@@ -2,41 +2,32 @@ import MilkdownEditor from "./components/MilkdownEditor";
 import styles from './App.module.scss';
 import TitleBar from "./components/TitleBar";
 import { useAtom } from "jotai";
-import { contentJotai, filePathJotai, savedJotai } from "./jotais/file";
+import { contentJotai, filePathJotai, savedJotai, savingJotai } from "./jotais/file";
 import { aboutJotai, loadingJotai, preferenceJotai, toolbarJotai, vibrancyJotai } from "./jotais/ui";
 import classNames from "classnames";
 import { Spinner } from "@fluentui/react-components";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FluentProvider, webLightTheme, webDarkTheme } from '@fluentui/react-components';
 import useIsDarkMode from "./hooks/dark";
 import Preferences from "./components/Preferences";
-import { writeTextFile, readTextFile } from '@tauri-apps/api/fs';
 import { settingsJotai } from "./jotais/settings";
 import { useKeyPress, useInterval, useEventListener, useAsyncEffect } from "ahooks";
 import { version as getVersion, type as getType } from '@tauri-apps/api/os';
 import About from "./components/About";
-import { save as saveFilePicker } from '@tauri-apps/api/dialog';
-import { documentDir } from '@tauri-apps/api/path';
 import { invoke } from '@tauri-apps/api/tauri';
 import FloatingToolbar from "./components/FloatingToolbar";
 import { Editor } from "@milkdown/core";
 import { IntlProvider } from 'react-intl';
 import localeData from '../locale';
 
-const availbleExts = [{
-    name: 'Markdown',
-    extensions: ['md']
-}, {
-    name: 'Text file',
-    extensions: ['txt']
-}];
 
 function App () {
     const [content, setContent] = useAtom(contentJotai);
     const [filePath, setFilePath] = useAtom(filePathJotai);
     const [loading] = useAtom(loadingJotai);
     const [, setToolbar] = useAtom(toolbarJotai);
-    const [saved, setSaved] = useAtom(savedJotai);
+    const [saved] = useAtom(savedJotai);
+    const [saving, setSaving] = useAtom(savingJotai);
     const [settings] = useAtom(settingsJotai);
     const [preference, setPreference] = useAtom(preferenceJotai);
     const [, setVibrancy] = useAtom(vibrancyJotai);
@@ -83,33 +74,20 @@ function App () {
 
     // Auto save
     useInterval(async () => {
-        if (filePath === null || saved) return;
-        await writeTextFile({ path: filePath, contents: content });
-        setSaved(true);
+        if (filePath === null || saved || saving) return;
+        setSaving(true);
 
     }, settings.autoSave ? settings.saveInterval * 1000 : -1);
 
     // Save when editor blurred
     useEventListener('blur', async () => {
-        if (!settings.saveBlur || filePath === null || saved) return;
-        await writeTextFile({ path: filePath, contents: content });
-        setSaved(true);
+        if (!settings.saveBlur || filePath === null || saved || saving) return;
+        setSaving(true);
     });
 
     // Shortcuts
     useKeyPress('ctrl.s', async () => {
-        let selected = filePath ?? '';
-        if (!selected) {
-            const _selected = await saveFilePicker({
-                defaultPath: await documentDir(),
-                filters: availbleExts
-            });
-            if (_selected === null) return;
-            selected = _selected;
-            setFilePath(selected as string);
-        }
-        await writeTextFile({ path: selected, contents: content });
-        setSaved(true);
+        setSaving(true);
     });
     useKeyPress('ctrl.f', (e) => {
         e.preventDefault();
@@ -123,24 +101,12 @@ function App () {
     });
 
     useKeyPress('ctrl.alt.d', () => {
-        alert(`filePath: ${filePath}\nsettings: ${JSON.stringify(settings)}\ncontent: ${content}`);
+        alert(`filePath: ${filePath}\nsettings: ${JSON.stringify(settings)}\nsaved: ${saved}`);
     });
 
     useEffect(() => {
         if (settings.vibrancy !== 'none') invoke(`apply_${settings.vibrancy}`);
     }, [settings.vibrancy]);
-
-    // Read text file from path if filePath changed
-    useLayoutEffect(() => {
-        if (filePath !== null) {
-            readTextFile(filePath).then((text) => {
-                setContent(text as string);
-                setSaved(true);
-            }).catch(e => {
-                alert(`Cannot open file: ${e.message}`);
-            });
-        }
-    }, [filePath]);
 
     return (
         <FluentProvider theme={isDarkMode ? webDarkTheme : webLightTheme} className='provider'>

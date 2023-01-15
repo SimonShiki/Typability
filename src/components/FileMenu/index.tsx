@@ -4,7 +4,7 @@ import { Folder16Regular } from '@fluentui/react-icons';
 import { useAtom } from 'jotai';
 import  { open as openFilePicker, save as saveFilePicker } from '@tauri-apps/api/dialog';
 import { documentDir } from '@tauri-apps/api/path';
-import { contentJotai, filePathJotai, savedJotai } from '../../jotais/file';
+import { contentJotai, filePathJotai, savedJotai, savingJotai } from '../../jotais/file';
 import { writeTextFile } from '@tauri-apps/api/fs';
 import { aboutJotai, preferenceJotai } from '../../jotais/ui';
 import { FormattedMessage } from 'react-intl';
@@ -25,11 +25,11 @@ const availbleExportExts = [{
 
 const FileMenu: React.FC = () => {
     const [filePath, setFilePath] = useAtom(filePathJotai);
-    const [, setContent] = useAtom(contentJotai);
+    const [content, setContent] = useAtom(contentJotai);
     const [, setPreference] = useAtom(preferenceJotai);
+    const [saved, setSaved] = useAtom(savedJotai);
     const [, setAbout] = useAtom(aboutJotai);
-    const [, setSaved] = useAtom(savedJotai);
-    const [content] = useAtom(contentJotai);
+    const [, setSaving] = useAtom(savingJotai);
     return (
         <Menu>
             <MenuTrigger disableButtonEnhancement>
@@ -49,7 +49,6 @@ const FileMenu: React.FC = () => {
                 <MenuList>
                     <MenuItem onClick={async () => {
                         setFilePath(null);
-                        setContent('');
                     }}>
                         <FormattedMessage
                             id='menu.file.new'
@@ -57,13 +56,13 @@ const FileMenu: React.FC = () => {
                         />
                     </MenuItem>
                     <MenuItem onClick={async () => {
+                        // @todo need refactor
                         const selected = await openFilePicker({
                             defaultPath: await documentDir(),
                             filters: availbleExts
                         });
                         if (selected === null) return;
                         setFilePath(selected as string);
-
                     }}>
                         <FormattedMessage
                             id='menu.file.open'
@@ -71,9 +70,7 @@ const FileMenu: React.FC = () => {
                         />
                     </MenuItem>
                     <MenuItem disabled={filePath === null} onClick={async () => {
-                        if (filePath === null) return;
-
-                        await writeTextFile({ path: filePath, contents: content });
+                        setSaving(true);
                     }}>
                         <FormattedMessage
                             id='menu.file.save'
@@ -81,16 +78,17 @@ const FileMenu: React.FC = () => {
                         />
                     </MenuItem>
                     <MenuItem onClick={async () => {
-                        const selected = await saveFilePicker({
-                            defaultPath: await documentDir(),
-                            filters: availbleExts
-                        });
-                        if (selected === null) return;
-
-                        await writeTextFile({ path: selected as string, contents: content });
-                        setSaved(true);
-
-                        setFilePath(selected as string);
+                        // Store original jotai
+                        const originalFilePath = filePath;
+                        const originalContent = content;
+                        const originalSaved = saved;
+                        // If filePath is null, setSaving will trigged file picker automatically
+                        setFilePath(null);
+                        setSaving(true);
+                        // Restore original jotai
+                        setFilePath(originalFilePath);
+                        setContent(originalContent);
+                        setSaved(originalSaved);
                     }}>
                         <FormattedMessage
                             id='menu.file.saveAs'
@@ -99,6 +97,7 @@ const FileMenu: React.FC = () => {
                     </MenuItem>
                     <MenuDivider />
                     <MenuItem onClick={async () => {
+                        // @todo need refactor
                         const selected = await saveFilePicker({
                             defaultPath: await documentDir(),
                             filters: availbleExportExts
@@ -110,7 +109,7 @@ const FileMenu: React.FC = () => {
                         switch (ext) {
                         case 'htm':
                             // eslint-disable-next-line no-case-declarations
-                            const converter = new showdown.Converter();
+                            const converter = new showdown.Converter(); // @todo use ProseMirror's toDOM function
                             await writeTextFile({ path: selected as string, contents: converter.makeHtml(content) });
                             break;
                         }
