@@ -7,7 +7,7 @@ import { Add20Regular, ArrowDown20Regular, FullScreenMaximize20Regular } from '@
 import FileMenu from '../FileMenu';
 import EditMenu from '../EditMenu';
 import { useAtom } from 'jotai';
-import { aboutJotai, preferenceJotai } from '../../jotais/ui';
+import { aboutJotai, preferenceJotai, vibrancyJotai } from '../../jotais/ui';
 import { Editor } from '@milkdown/core';
 import { savedJotai, savingJotai } from '../../jotais/file';
 import { useIntl } from 'react-intl';
@@ -22,6 +22,7 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
     const [preference] = useAtom(preferenceJotai);
     const [about] = useAtom(aboutJotai);
     const [saved] = useAtom(savedJotai);
+    const [vibrancy] = useAtom(vibrancyJotai);
     const [, setSaving] = useAtom(savingJotai);
     const titleBarRef = useRef<HTMLDivElement>(null);
     const intl = useIntl();
@@ -36,6 +37,7 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
             titleBarRef.current.removeEventListener('contextmenu', disableMenu);
         };
     }, []);
+    if (vibrancy.vibrancy) return <></>;
     return (
         <>
             <div data-tauri-drag-region className={styles.bar} ref={titleBarRef} >

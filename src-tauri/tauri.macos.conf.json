@@ -1,5 +1,10 @@
 {
     "tauri": {
-        "macOSPrivateApi": true
+        "windows": [
+            {
+                "transparent": false,
+                "decorations": true
+            }
+        ]
     }
 }

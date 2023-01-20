@@ -167,15 +167,7 @@ const Preferences: React.FC<PerferencesProps> = ({
                                 onOptionSelect={(e, data) => {
                                     if (settings.vibrancy === 'mica') invoke('clear_mica');
                                     else if (settings.vibrancy === 'arcylic') invoke('clear_arcylic');
-
-                                    // Window-vibrancy doesn't provide clear_vibrancy right now, so we cannot hot-update it.
-                                    if (data.optionValue === 'vibrancy') {
-                                        addRelaunchItem('vibrancy', data.optionValue);
-                                    } else if (settings.vibrancy === 'vibrancy' && data.optionValue === 'none') {
-                                        deleteRelaunchItem('vibrancy');
-                                    } else {
-                                        setSetting('vibrancy', data.optionValue);
-                                    }
+                                    setSetting('vibrancy', data.optionValue);
                                 }}
                             >
                                 <Option value="none">
@@ -197,14 +189,6 @@ const Preferences: React.FC<PerferencesProps> = ({
                                         {intl.formatMessage({
                                             id: 'preferences.windowStyle.mica',
                                             defaultMessage: 'Mica'
-                                        })}
-                                    </Option>
-                                )}
-                                {vibrancy.vibrancy && (
-                                    <Option value="vibrancy">
-                                        {intl.formatMessage({
-                                            id: 'preferences.windowStyle.vibrancy',
-                                            defaultMessage: 'Vibrancy'
                                         })}
                                     </Option>
                                 )}

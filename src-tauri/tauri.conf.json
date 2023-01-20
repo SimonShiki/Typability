@@ -80,6 +80,7 @@
     },
     "windows": [
       {
+        "label": "typability",
         "fullscreen": false,
         "height": 680,
         "resizable": true,

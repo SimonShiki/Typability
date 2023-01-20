@@ -10,7 +10,7 @@ mod setup;
 fn main() {
     tauri::Builder::default()
         .setup(setup::init)
-        .invoke_handler(tauri::generate_handler![setup::get_args, setup::apply_mica, setup::clear_mica, setup::apply_arcylic, setup::clear_arcylic, setup::apply_vibrancy])
+        .invoke_handler(tauri::generate_handler![setup::get_args, setup::apply_mica, setup::clear_mica, setup::apply_arcylic, setup::clear_arcylic])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

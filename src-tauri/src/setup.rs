@@ -1,5 +1,5 @@
 use tauri::{App, Manager};
-use window_vibrancy::{self, NSVisualEffectMaterial};
+use window_vibrancy::{self};
 
 use window_shadows::set_shadow;
 
@@ -9,13 +9,6 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
     set_shadow(&win, true).unwrap();
 
     Ok(())
-}
-
-#[tauri::command]
-pub fn apply_vibrancy(window: tauri::Window) {
-    #[cfg(target_os = "macos")]
-    window_vibrancy::apply_vibrancy(&window, NSVisualEffectMaterial::FullScreenUI, None, None)
-        .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
 }
 
 #[tauri::command]
@@ -54,7 +47,7 @@ pub fn get_args() -> Result<Vec<String>, ()> {
 
 #[cfg(target_os = "windows")]
 pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>> {
-    let win = app.get_window("main").unwrap();
+    let win = app.get_window("typability").unwrap();
     set_shadow(&win, true).unwrap();
 
     Ok(())
