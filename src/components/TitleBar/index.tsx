@@ -67,7 +67,7 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
     return (
         <>
             <div data-tauri-drag-region className={styles.bar} ref={titleBarRef} >
-                {!vibrancy.vibrancy && <div data-tauri-drag-region className={styles.title}>Typability</div>}
+                {vibrancy.vibrancy ? <div className={styles.placeholder} /> : <div data-tauri-drag-region className={styles.title}>Typability</div>}
                 <div data-tauri-drag-region className={styles.operation}>
                     <FileMenu />
                     <div style={{ width: '0.5rem' }}></div>

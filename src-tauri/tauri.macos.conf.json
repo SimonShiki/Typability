@@ -3,7 +3,9 @@
         "windows": [
             {
                 "transparent": false,
-                "decorations": true
+                "hiddenTitle": true,
+                "decorations": true,
+                "titleBarStyle":"Overlay"
             }
         ]
     }

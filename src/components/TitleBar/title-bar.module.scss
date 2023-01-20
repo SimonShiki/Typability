@@ -16,6 +16,9 @@
     width: 100%;
     user-select: none;
     padding: 4px;
+    .placeholder {
+        width: 64px;
+    }
     .title {
         display: flex;
         align-items: center;
