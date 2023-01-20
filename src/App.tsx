@@ -37,6 +37,7 @@ function App () {
 
     // Initialize
     useAsyncEffect(async () => {
+        // Detect system type
         const type = await getType();
         if (type === 'Linux') return;
 
