@@ -30,7 +30,7 @@ function App () {
     const [saving, setSaving] = useAtom(savingJotai);
     const [settings] = useAtom(settingsJotai);
     const [preference, setPreference] = useAtom(preferenceJotai);
-    const [, setVibrancy] = useAtom(vibrancyJotai);
+    const [vibrancy, setVibrancy] = useAtom(vibrancyJotai);
     const [about, setAbout] = useAtom(aboutJotai);
     const isDarkMode = useIsDarkMode();
     const editorInstance = useRef<Editor>(null);
@@ -113,7 +113,8 @@ function App () {
         <FluentProvider theme={isDarkMode ? webDarkTheme : webLightTheme} className='provider'>
             <IntlProvider defaultLocale='en' locale={settings.language} messages={localeData[settings.language].message}>
                 <div className={classNames(styles.container, {
-                    [styles.window]: !settings.vibrancy || settings.vibrancy === 'none'
+                    [styles.window]: !settings.vibrancy || settings.vibrancy === 'none',
+                    [styles.mac]: vibrancy.vibrancy
                 })}>
                     <TitleBar editorInstance={editorInstance} />
                     <div className={styles.editor} spellCheck={false}>

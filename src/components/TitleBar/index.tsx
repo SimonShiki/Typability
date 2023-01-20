@@ -13,6 +13,7 @@ import { useIntl } from 'react-intl';
 import { TauriEvent } from '@tauri-apps/api/event';
 import { confirm } from '@tauri-apps/api/dialog';
 import { useUpdateEffect } from 'ahooks';
+import classNames from 'classnames';
 
 let globalSaved = savedJotai.init;
 interface TitleBar {
@@ -66,8 +67,11 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
     }, []);
     return (
         <>
-            <div data-tauri-drag-region className={styles.bar} ref={titleBarRef} >
-                {vibrancy.vibrancy ? <div className={styles.placeholder} /> : <div data-tauri-drag-region className={styles.title}>Typability</div>}
+            <div data-tauri-drag-region className={classNames(styles.bar, {
+                [styles.mac]: vibrancy.vibrancy
+            })} ref={titleBarRef} >
+                {vibrancy.vibrancy && <div className={styles.placeholder} />}
+                <div data-tauri-drag-region className={styles.title}>Typability</div>
                 <div data-tauri-drag-region className={styles.operation}>
                     <FileMenu />
                     <div style={{ width: '0.5rem' }}></div>

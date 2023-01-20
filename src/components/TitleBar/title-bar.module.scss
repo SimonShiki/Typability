@@ -16,9 +16,6 @@
     width: 100%;
     user-select: none;
     padding: 4px;
-    .placeholder {
-        width: 64px;
-    }
     .title {
         display: flex;
         align-items: center;
@@ -40,5 +37,13 @@
     }
     .close {
         transform: rotate(45deg);
+    }
+}
+
+.mac {
+    height: 28px;
+
+    .placeholder {
+        width: 56px;
     }
 }
