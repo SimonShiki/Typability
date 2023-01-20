@@ -1,6 +1,6 @@
 [package]
 name = "typability"
-version = "0.3.2"
+version = "0.4.0"
 description = "a WYSIWYG markdown editor based on Milkdown."
 authors = ["SimonShiki"]
 license = ""
