@@ -16,6 +16,7 @@
     "@fluentui/react-components": "^9.8.0",
     "@fluentui/react-icons": "^2.0.190",
     "@material-design-icons/font": "^0.14.2",
+    "@milkdown-lab/plugin-split-editing": "^0.1.4",
     "@milkdown/core": "^6.5.4",
     "@milkdown/plugin-block": "^6.5.4",
     "@milkdown/plugin-clipboard": "^6.5.4",

@@ -3,7 +3,7 @@ import styles from './App.module.scss';
 import TitleBar from "./components/TitleBar";
 import { useAtom } from "jotai";
 import { contentJotai, filePathJotai, savedJotai, savingJotai } from "./jotais/file";
-import { aboutJotai, loadingJotai, preferenceJotai, toolbarJotai, vibrancyJotai } from "./jotais/ui";
+import { aboutJotai, loadingJotai, preferenceJotai, toolbarJotai, twoColumnJotai, vibrancyJotai } from "./jotais/ui";
 import classNames from "classnames";
 import { Spinner } from "@fluentui/react-components";
 import { useEffect, useRef } from "react";
@@ -26,6 +26,7 @@ function App () {
     const [filePath, setFilePath] = useAtom(filePathJotai);
     const [loading] = useAtom(loadingJotai);
     const [, setToolbar] = useAtom(toolbarJotai);
+    const [twoColumn] = useAtom(twoColumnJotai);
     const [saved] = useAtom(savedJotai);
     const [saving, setSaving] = useAtom(savingJotai);
     const [settings] = useAtom(settingsJotai);
@@ -124,6 +125,7 @@ function App () {
                             onMarkdownUpdated={(markdown) => {
                                 setContent(markdown);
                             }}
+                            twoColumnEditor={twoColumn}
                             syntaxOption={settings.syntax}
                             theme={isDarkMode ? settings.themeDark : settings.theme}
                             ref={editorInstance}

@@ -18,3 +18,4 @@ interface VibrancyConfig {
 }
 
 export const vibrancyJotai = atom<VibrancyConfig>(defaultVibrancyConfig);
+export const twoColumnJotai = atom<boolean>(false);

@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect } from 'react';
-import { Editor, rootCtx, defaultValueCtx } from '@milkdown/core';
+import { Editor, rootCtx, defaultValueCtx, commandsCtx, EditorStatus } from '@milkdown/core';
 import { nord, nordDark } from '@milkdown/theme-nord';
 import { ReactEditor, useEditor } from '@milkdown/react';
 import { commonmark, heading as commonmarkHeading } from '@milkdown/preset-commonmark';
@@ -20,10 +20,12 @@ import { refractor } from 'refractor/lib/common';
 import { math } from '@milkdown/plugin-math';
 import { cursor } from '@milkdown/plugin-cursor';
 import 'katex/dist/katex.min.css';
+import { splitEditing, ToggleSplitEditing } from '@milkdown-lab/plugin-split-editing';
 
 interface MilkdownEditor {
     content: string;
     useMenu?: boolean;
+    twoColumnEditor?: boolean;
     syntaxOption?: keyof typeof syntaxMap;
     theme?: keyof typeof themeMap;
     onMarkdownUpdated?: (markdown: string, prevMarkdown: string | null) => void;
@@ -54,6 +56,7 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
     syntaxOption = 'gfm',
     theme = 'nord',
     onMarkdownUpdated,
+    twoColumnEditor = false
 }, ref) => {
     useEffect(() => {
         if (ref) {
@@ -61,6 +64,17 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
             else ref.current = getInstance() ?? null;
         }
     });
+
+    useEffect(() => {
+        setTimeout(() => {
+            const instance = getInstance();
+            if (!instance || instance.status !== EditorStatus.Created) return;
+            instance.action((ctx) => {
+                const commandManager = ctx.get(commandsCtx);
+                commandManager.call(ToggleSplitEditing);
+            });
+        }, 0);
+    }, [twoColumnEditor]);
 
     useUpdateEffect(() => {
         if (!loading) {
@@ -105,7 +119,8 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
             .use(tooltip)
             .use(diagram)
             .use(themeMap[theme])
-            .use(block);
+            .use(block)
+            .use(splitEditing);
 
         if (useMenu) instance.use(menu);
 
@@ -128,7 +143,6 @@ function areEqual (prevProps: Readonly<MilkdownEditor>, nextProps: Readonly<Milk
                 return false;
             }
         }
-        return true;
     }
     return true;
 }

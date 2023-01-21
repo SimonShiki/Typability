@@ -1,8 +1,8 @@
 import React from 'react';
-import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { Menu, MenuButton, MenuDivider, MenuItem, MenuItemCheckbox, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { DocumentEdit16Regular } from '@fluentui/react-icons';
 import { useAtom } from 'jotai';
-import { editMenuJotai, toolbarJotai } from '../../jotais/ui';
+import { editMenuJotai, toolbarJotai, twoColumnJotai } from '../../jotais/ui';
 import { Editor, commandsCtx, editorViewCtx, parserCtx } from '@milkdown/core';
 import { FormattedMessage } from 'react-intl';
 import { InsertTable } from '@milkdown/preset-gfm';
@@ -28,11 +28,12 @@ const EditMenu: React.FC<EditMenu> = ({editorInstance}) => {
     const [, setFloatingToolbar] = useAtom(toolbarJotai);
     const [settings] = useAtom(settingsJotai);
     const [, setEditMenu] = useAtom(editMenuJotai);
+    const [twoColumn, setTwoColumn] = useAtom(twoColumnJotai);
 
     return (
         <Menu onOpenChange={(e, data) => {
             setEditMenu(data.open);
-        }}>
+        }} hasCheckmarks>
             <MenuTrigger disableButtonEnhancement>
                 <MenuButton
                     size="small"
@@ -77,6 +78,18 @@ const EditMenu: React.FC<EditMenu> = ({editorInstance}) => {
                             defaultMessage='Add table'
                         />
                     </MenuItem>
+                    <MenuItemCheckbox
+                        name='twoColumnEditor'
+                        value='twoColumn'
+                        onClick={() => {
+                            setTwoColumn(!twoColumn);
+                        }}
+                    >
+                        <FormattedMessage
+                            id='menu.edit.twoColumnEditor'
+                            defaultMessage='Two-column Editor'
+                        />
+                    </MenuItemCheckbox>
                     <MenuItem onClick={() => {
                         if (!editorInstance.current) return;
                         const editorView = editorInstance.current.ctx.get(editorViewCtx);
