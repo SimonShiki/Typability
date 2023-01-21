@@ -73,7 +73,7 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
                 const commandManager = ctx.get(commandsCtx);
                 commandManager.call(ToggleSplitEditing);
             });
-        }, 0);
+        }, 1);
     }, [twoColumnEditor]);
 
     useUpdateEffect(() => {
