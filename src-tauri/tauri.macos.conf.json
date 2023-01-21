@@ -2,6 +2,13 @@
     "tauri": {
         "windows": [
             {
+                "label": "typability",
+                "fullscreen": false,
+                "height": 680,
+                "resizable": true,
+                "title": "Typability",
+                "width": 540,
+                "center": true,
                 "transparent": false,
                 "hiddenTitle": true,
                 "decorations": false
