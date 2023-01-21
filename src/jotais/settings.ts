@@ -10,7 +10,7 @@ interface Setting {
     saveBlur: boolean;
     saveInterval: number;
     defaultPath: string;
-    vibrancy: 'mica' | 'arcylic' | 'vibrancy' | 'none';
+    vibrancy: 'mica' | 'arcylic' | 'none';
 }
 
 export const settingsJotai = atomWithStorage<Setting>('settings', {
