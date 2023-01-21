@@ -1,5 +1,6 @@
 {
     "tauri": {
+        "macOSPrivateApi": true,
         "windows": [
             {
                 "label": "typability",
@@ -9,7 +10,7 @@
                 "title": "Typability",
                 "width": 540,
                 "center": true,
-                "transparent": false,
+                "transparent": true,
                 "hiddenTitle": true,
                 "decorations": false
             }
