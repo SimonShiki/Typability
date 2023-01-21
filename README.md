@@ -21,7 +21,8 @@ a WYSIWYG markdown editor based on [Milkdown](https://milkdown.dev/).
 - [x] Find/Replace
 - [x] LaTeX support
 - [ ] More export options
-- [ ] Two-column editor
+- [x] Two-column editor
+- [ ] Picture bed integration
 
 # ☔ System Requirements
 - [x] Windows 7+ (Recommend: Windows 10 1803 +)
