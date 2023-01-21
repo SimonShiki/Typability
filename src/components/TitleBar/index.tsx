@@ -70,7 +70,40 @@ const TitleBar : React.FC<TitleBar> = ({editorInstance}) => {
             <div data-tauri-drag-region className={classNames(styles.bar, {
                 [styles.mac]: vibrancy.vibrancy
             })} ref={titleBarRef} >
-                {vibrancy.vibrancy && <div className={styles.placeholder} />}
+                {vibrancy.vibrancy && (
+                    <div className={styles.trafficLights}>
+                        <div
+                            className={styles.light}
+                            style={{
+                                backgroundColor: '#ff5e57',
+                                border: '1px solid #e0534d'
+                            }}
+                            onClick={async () => {
+                                appWindow.emit(TauriEvent.WINDOW_CLOSE_REQUESTED);
+                            }}
+                        />
+                        <div
+                            className={styles.light}
+                            style={{
+                                backgroundColor: '#ffbb2e',
+                                border: '1px solid #e0a528'
+                            }}
+                            onClick={async () => {
+                                await appWindow.minimize();
+                            }}
+                        />
+                        <div
+                            className={styles.light}
+                            style={{
+                                backgroundColor: '#38c149',
+                                border: '1px solid #31aa40'
+                            }}
+                            onClick={async () => {
+                                await appWindow.toggleMaximize();
+                            }}
+                        />
+                    </div>
+                )}
                 <div data-tauri-drag-region className={styles.title}>Typability</div>
                 <div data-tauri-drag-region className={styles.operation}>
                     <FileMenu />

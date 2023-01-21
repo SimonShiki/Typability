@@ -46,12 +46,12 @@
         &>div {
             // Milkdown
             :global .milkdown {
-                height: calc(100vh - 1rem - 28px);
+                height: calc(100vh - 1rem - 32px);
     
                 // ProseMirror / Editor
                 :global .editor {
                     padding: 40px 20px;
-                    height: calc(100vh - 1rem - 80px - 28px);
+                    height: calc(100vh - 1rem - 80px - 32px);
                 }
             }
         }

@@ -6,7 +6,7 @@ export const toolbarJotai = atom<boolean | 'find' | 'replace'>(false);
 export const editMenuJotai = atom<boolean>(false);
 
 const defaultVibrancyConfig = {
-    arcylic: false, // Also supports emoji panel
+    arcylic: false,
     mica: false,
     vibrancy: false
 };

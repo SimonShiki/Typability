@@ -41,9 +41,19 @@
 }
 
 .mac {
-    height: 28px;
-
-    .placeholder {
-        width: 56px;
+    height: 32px;
+    .trafficLights {
+        display: flex;
+        flex-direction: row;
+        margin-left: 4px;
+        .light {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin: 0 4px;
+        }
+        .light:active {
+            filter: brightness(80%);
+        }
     }
 }
