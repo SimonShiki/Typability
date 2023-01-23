@@ -27,6 +27,11 @@
             :global .milkdown-menu-wrapper {
                 user-select: none;
             }
+            // Two-column editor
+            :global .milkdown-split-editor {
+                overflow: auto;
+                max-height: calc(100vh - 1rem - 32px);
+            }
             :global .milkdown {
                 overflow: auto;
                 height: calc(100vh - 1rem - 40px);
