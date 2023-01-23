@@ -30,7 +30,7 @@
             // Two-column editor
             :global .milkdown-split-editor {
                 overflow: auto;
-                max-height: calc(100vh - 1rem - 32px);
+                max-height: calc(100vh - 1rem - 40px);
             }
             :global .milkdown {
                 overflow: auto;
@@ -66,7 +66,12 @@
 .withMenu {
     .editor {
         // Outer element
-        &>div {
+        & >div {
+            // Two-column editor
+                :global .milkdown-split-editor {
+                    overflow: auto;
+                    max-height: calc(100vh - 1rem - 32px);
+                }
             :global .milkdown {
                 height: calc(100vh - 1rem - 56px - 40px);
                 // ProseMirror / Editor
