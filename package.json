@@ -56,7 +56,7 @@
     "@typescript-eslint/parser": "^5.48.0",
     "@vitejs/plugin-react-swc": "^3.0.1",
     "eslint": "^8.31.0",
-    "eslint-plugin-formatjs": "^4.3.9",
+    "eslint-plugin-formatjs": "^4.4.0",
     "eslint-plugin-react": "^7.31.11",
     "husky": "^8.0.3",
     "sass": "^1.57.1",
