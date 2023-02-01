@@ -38,7 +38,7 @@
     "@tauri-apps/api": "^1.2.0",
     "ahooks": "^3.7.4",
     "classnames": "^2.3.2",
-    "jotai": "^1.12.1",
+    "jotai": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intl": "^6.2.7",
