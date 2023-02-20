@@ -1143,6 +1143,11 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@jridgewell/sourcemap-codec@^1.4.13":
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz#add4c98d341472a289190b424efbdb096991bb24"
+  integrity sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==
+
 "@lezer/common@^1.0.0":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@lezer/common/-/common-1.0.2.tgz#8fb9b86bdaa2ece57e7d59e5ffbcb37d71815087"
@@ -2630,10 +2635,10 @@ escape-string-regexp@^5.0.0:
   resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz"
   integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
-eslint-plugin-formatjs@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-formatjs/-/eslint-plugin-formatjs-4.6.0.tgz#ebf6bef6179fd347078500fcdeee765382112883"
-  integrity sha512-FmtJQUrKeAudrpaIyiVW1Gc5Pf0esKewdlgew1ccDmphcfsm8eCgC4tREl4MGeGXSlqd5bcdxK6ZAUYNZpK2oA==
+eslint-plugin-formatjs@^4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-formatjs/-/eslint-plugin-formatjs-4.7.1.tgz#84c66e95bb925444932a196774aa97de6e1b5f5e"
+  integrity sha512-TZGLdGUl5owA8m2WqqM+E+Y9kpsDTf7yo1QKw4czvLj4qDTBdp0Rt1Qckf8TjxNJ1C2+FTjgbopuOk7w+A5FQw==
   dependencies:
     "@formatjs/icu-messageformat-parser" "2.2.0"
     "@formatjs/ts-transformer" "3.11.6"
@@ -2641,6 +2646,7 @@ eslint-plugin-formatjs@^4.6.0:
     "@types/picomatch" "^2.3.0"
     "@typescript-eslint/typescript-estree" "5.45.0"
     emoji-regex "^10.2.1"
+    magic-string "^0.29.0"
     picomatch "^2.3.1"
     tslib "2.4.0"
     typescript "^4.7"
@@ -3475,6 +3481,13 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+magic-string@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.29.0.tgz#f034f79f8c43dba4ae1730ffb5e8c4e084b16cf3"
+  integrity sha512-WcfidHrDjMY+eLjlU+8OvwREqHwpgCeKVBUpQ3OhYYuvfaYCUgcbuBzappNzZvg/v8onU3oQj+BYpkOJe9Iw4Q==
+  dependencies:
+    "@jridgewell/sourcemap-codec" "^1.4.13"
 
 markdown-table@^3.0.0:
   version "3.0.3"
