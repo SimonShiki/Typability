@@ -1017,10 +1017,10 @@
   dependencies:
     tslib "^2.1.0"
 
-"@formatjs/cli@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@formatjs/cli/-/cli-6.0.1.tgz#dc295e4e726c984e028376759b3a3fef5eb1d933"
-  integrity sha512-Fezqcvn6EAGOLvq1LuBJ8C1dNKb4AKqdL3Bc61uCNQjjvfJv3fsxgLYFV4pkOlLGE/xzXY+xywEkCxN3Eo7Arw==
+"@formatjs/cli@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/cli/-/cli-6.0.3.tgz#6bb4780db3026566f0ce7d4b2ea357b9e422c159"
+  integrity sha512-YPhDUw5zQwufAZRUlk054Z/J9jeZWH4LEbAVnQFrfJ8NNgOziDqn9SSTEfRB4W0w8JBGgte4x1SwwJjH/HGoRA==
 
 "@formatjs/ecma402-abstract@1.14.3":
   version "1.14.3"
