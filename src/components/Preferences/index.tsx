@@ -8,10 +8,11 @@ import {
     DialogTitle,
     Input,
     Text,
-    Switch
+    Switch,
+    Dropdown,
+    Option
 } from '@fluentui/react-components';
 import React, { useState } from 'react';
-import { Dropdown, Option } from '@fluentui/react-components/unstable';
 import styles from './preferences.module.scss';
 import { useAtom } from 'jotai';
 import { settingsJotai } from '../../jotais/settings';
