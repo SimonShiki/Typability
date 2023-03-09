@@ -233,6 +233,18 @@ const Preferences: React.FC<PerferencesProps> = ({
                                 }}
                             />
                         </div>
+                        <div className={styles.option}>
+                            <p className={styles.description}>
+                                <FormattedMessage
+                                    id="preferences.slash"
+                                    defaultMessage="Enable Slash"
+                                />
+                            </p>
+                            <Switch checked={settings.slash} onChange={(e, data) => {
+                                if (data.checked !== settings.slash) addRelaunchItem('slash', data.checked);
+                                else deleteRelaunchItem('slash');
+                            }} />
+                        </div>
                         {/*
                         <div className={styles.option}>
                             <p className={styles.description}>

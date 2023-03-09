@@ -8,6 +8,7 @@ interface Setting {
     syntax: 'gfm' | 'commonmark';
     autoSave: boolean;
     saveBlur: boolean;
+    slash: boolean;
     saveInterval: number;
     defaultPath: string;
     vibrancy: 'mica' | 'arcylic' | 'none';
@@ -20,6 +21,7 @@ export const settingsJotai = atomWithStorage<Setting>('settings', {
     syntax: 'gfm',
     autoSave: false,
     saveBlur: false,
+    slash: false,
     saveInterval: 120,
     defaultPath: '',
     vibrancy: 'none'

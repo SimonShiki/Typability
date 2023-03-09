@@ -6,6 +6,7 @@ import { commonmark, heading as commonmarkHeading } from '@milkdown/preset-commo
 import { tooltip } from '@milkdown/plugin-tooltip';
 import { gfm, heading as gfmHeading } from '@milkdown/preset-gfm';
 import { menu } from '@milkdown/plugin-menu';
+import { slash } from '@milkdown/plugin-slash';
 import '@material-design-icons/font';
 import { history } from '@milkdown/plugin-history';
 import { replaceAll, switchTheme } from '@milkdown/utils';
@@ -25,6 +26,7 @@ import { splitEditing, ToggleSplitEditing } from '@milkdown-lab/plugin-split-edi
 interface MilkdownEditor {
     content: string;
     useMenu?: boolean;
+    useSlash?: boolean;
     twoColumnEditor?: boolean;
     syntaxOption?: keyof typeof syntaxMap;
     theme?: keyof typeof themeMap;
@@ -53,6 +55,7 @@ let currentTheme = '';
 const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEditor>(({
     content,
     useMenu = false,
+    useSlash = false,
     syntaxOption = 'gfm',
     theme = 'nord',
     onMarkdownUpdated,
@@ -88,7 +91,7 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
                 currentTheme = theme;
             }
         }
-    }, [content, theme, syntaxOption]);
+    }, [content, theme, syntaxOption, useSlash]);
 
     const { editor, loading, getInstance } = useEditor((root) => {
         currentContent = content;
@@ -123,6 +126,7 @@ const MilkdownEditor: React.FC<MilkdownEditor> = forwardRef<Editor, MilkdownEdit
             .use(splitEditing);
 
         if (useMenu) instance.use(menu);
+        if (useSlash) instance.use(slash);
 
         return instance;
     });

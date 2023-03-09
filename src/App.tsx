@@ -121,6 +121,7 @@ function App () {
                     <div className={styles.editor} spellCheck={false}>
                         <MilkdownEditor
                             useMenu={false}
+                            useSlash={settings.slash}
                             content={content}
                             onMarkdownUpdated={(markdown) => {
                                 setContent(markdown);

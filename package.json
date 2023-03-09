@@ -28,6 +28,7 @@
     "@milkdown/plugin-math": "^6.5.4",
     "@milkdown/plugin-menu": "^6.5.4",
     "@milkdown/plugin-prism": "^6.5.4",
+    "@milkdown/plugin-slash": "6.5.4",
     "@milkdown/plugin-tooltip": "^6.5.4",
     "@milkdown/preset-commonmark": "^6.5.4",
     "@milkdown/preset-gfm": "^6.5.4",
