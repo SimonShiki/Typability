@@ -1231,10 +1231,10 @@
     "@lezer/common" "^1.0.0"
     "@lezer/highlight" "^1.0.0"
 
-"@material-design-icons/font@^0.14.3":
-  version "0.14.3"
-  resolved "https://registry.yarnpkg.com/@material-design-icons/font/-/font-0.14.3.tgz#a3947bc2a6f0aea38ebed29eeb38b5f61be2e438"
-  integrity sha512-nnxcqi/UZwRnH6IRGAUkjO/pc8jlA+7nEmPBNwWkjtRtKDFw1RiumtS3yR9FvYr4/pylaE4Ewz68t2ROZCvroA==
+"@material-design-icons/font@^0.14.4":
+  version "0.14.4"
+  resolved "https://registry.yarnpkg.com/@material-design-icons/font/-/font-0.14.4.tgz#f33eb3971554145f4eea2111bc8a9883b8d02dba"
+  integrity sha512-sYfENbgU72vSyxn6t9fMT4o5p95s3PAix2AxhaJ+XS9kvTJ1S9EvXIcgNFCSkOl3NCBUrmS52PI4+1vOoy35WQ==
 
 "@milkdown-lab/plugin-split-editing@^0.1.4":
   version "0.1.4"
