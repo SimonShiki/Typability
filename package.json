@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.16.0",
-    "@fluentui/react-icons": "^2.0.197",
+    "@fluentui/react-icons": "^2.0.198",
     "@material-design-icons/font": "^0.14.4",
     "@milkdown-lab/plugin-split-editing": "^0.1.4",
     "@milkdown/core": "^6.5.4",
