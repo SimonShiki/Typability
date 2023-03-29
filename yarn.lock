@@ -2675,10 +2675,10 @@ escape-string-regexp@^5.0.0:
   resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz"
   integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
-eslint-plugin-formatjs@^4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-formatjs/-/eslint-plugin-formatjs-4.9.0.tgz#9ba74f731d41c2a18d132092766b30553855c666"
-  integrity sha512-U3u8TI/Mogo3sunTHDh24mc3p1zWAz/VaYjSkGhuYcLmqfkqEr3BmGUNQ8NTDvZviYHNTkhjHWuXQnUkh81grQ==
+eslint-plugin-formatjs@^4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-formatjs/-/eslint-plugin-formatjs-4.9.1.tgz#4269bdf61c627587b3fb112fef55250178d818ce"
+  integrity sha512-e6A7v84y6/RgXRYWqIQHJSHKutXGsQVdkYkzL7pgw5cJGEao0YVFqrbYu8ckbQsxQWfq8Dai4w0A/531F0mm2A==
   dependencies:
     "@formatjs/icu-messageformat-parser" "2.3.0"
     "@formatjs/ts-transformer" "3.12.0"
