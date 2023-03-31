@@ -646,10 +646,10 @@
     "@griffel/react" "^1.5.2"
     tslib "^2.1.0"
 
-"@fluentui/react-icons@^2.0.175", "@fluentui/react-icons@^2.0.198":
-  version "2.0.198"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.198.tgz#0745500199fe8f049f18092d6e352b815314cc24"
-  integrity sha512-P/3nNylk8iPn6+fldCYPsCUm2mu4D09+2ltleJiOfUbBWckpc5kGuMEf0A/fwXVm6DFXSddkz0VinjuM/Qfi5w==
+"@fluentui/react-icons@^2.0.175", "@fluentui/react-icons@^2.0.199":
+  version "2.0.199"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.199.tgz#93cc4971b13e89d8fd8c926b5eb50912078468cc"
+  integrity sha512-mFkdkP19sO9brg7ol2XONWjzvdJ8N+wfKLO6eY1NRtbXXDt9CEqEJ0eIaiFWGow9mv3e2N5nPkRKd9rSrRQK8Q==
   dependencies:
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
