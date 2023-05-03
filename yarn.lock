@@ -1141,12 +1141,25 @@
     intl-messageformat "10.3.5"
     tslib "^2.4.0"
 
-"@formatjs/ts-transformer@3.13.0", "@formatjs/ts-transformer@^3.11.6":
+"@formatjs/ts-transformer@3.13.0":
   version "3.13.0"
   resolved "https://registry.yarnpkg.com/@formatjs/ts-transformer/-/ts-transformer-3.13.0.tgz#61185278fb153d61e56fabbeed6d4fc8a0ee3af5"
   integrity sha512-TshsXkt2loK2GWFJFYTrlNThfCd4ubcEpokl9FWzGoR5f5e2FOxDPs69nTqw+7jodlKtx4VaTSfpNMtPvD9ZfQ==
   dependencies:
     "@formatjs/icu-messageformat-parser" "2.3.1"
+    "@types/json-stable-stringify" "^1.0.32"
+    "@types/node" "14 || 16 || 17"
+    chalk "^4.0.0"
+    json-stable-stringify "^1.0.1"
+    tslib "^2.4.0"
+    typescript "^4.7 || 5"
+
+"@formatjs/ts-transformer@^3.13.1":
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/@formatjs/ts-transformer/-/ts-transformer-3.13.1.tgz#37aa4992aa50740f808f1f888f112b8addb617c7"
+  integrity sha512-U5BuLqFx5wre5Q0NrZhBh7itMJZISYuZGoj8HdN/UO1EKaTL2HQjE1G040GjTpY0k+AAyaHK3b8WPqgHLvIaIQ==
+  dependencies:
+    "@formatjs/icu-messageformat-parser" "2.4.0"
     "@types/json-stable-stringify" "^1.0.32"
     "@types/node" "14 || 16 || 17"
     chalk "^4.0.0"
