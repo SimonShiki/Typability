@@ -1733,10 +1733,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.45.tgz#2c0fafd78705e7a18b7906b5201a522719dc5190"
   integrity sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==
 
-"@types/node@^20.1.2":
-  version "20.1.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.2.tgz#8fd63447e3f99aba6c3168fd2ec4580d5b97886f"
-  integrity sha512-CTO/wa8x+rZU626cL2BlbCDzydgnFNgc19h4YvizpTO88MFQxab8wqisxaofQJ/9bLGugRdWIuX/TbIs6VVF6g==
+"@types/node@^20.1.3":
+  version "20.1.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.3.tgz#bc8e7cd8065a5fc355a3a191a68db8019c58bc00"
+  integrity sha512-NP2yfZpgmf2eDRPmgGq+fjGjSwFgYbihA8/gK+ey23qT9RkxsgNTZvGOEpXgzIGqesTYkElELLgtKoMQTys5vA==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
