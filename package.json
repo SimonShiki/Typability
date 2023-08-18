@@ -60,7 +60,7 @@
     "eslint-plugin-formatjs": "^4.10.3",
     "eslint-plugin-react": "^7.33.2",
     "husky": "^8.0.3",
-    "sass": "^1.65.1",
+    "sass": "^1.66.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.9"
   }
