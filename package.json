@@ -55,7 +55,7 @@
     "@types/showdown": "^2.0.2",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
-    "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitejs/plugin-react-swc": "^3.4.0",
     "eslint": "^8.50.0",
     "eslint-plugin-formatjs": "^4.10.5",
     "eslint-plugin-react": "^7.33.2",
