@@ -1229,10 +1229,10 @@
     "@lezer/common" "^1.0.0"
     "@lezer/highlight" "^1.0.0"
 
-"@material-design-icons/font@^0.14.12":
-  version "0.14.12"
-  resolved "https://registry.yarnpkg.com/@material-design-icons/font/-/font-0.14.12.tgz#3cf6211e6e8c947be4157206b174f8df81ca32f7"
-  integrity sha512-S3tptjXalue2hdtcUUnCXKpMcvIEKlyXJrsVrPj3vvPAYR4IpvQcGCfB9n9mbC+U39QUwKrFIKKccaMtkrRqgQ==
+"@material-design-icons/font@^0.14.13":
+  version "0.14.13"
+  resolved "https://registry.yarnpkg.com/@material-design-icons/font/-/font-0.14.13.tgz#fb97163ae1072902780444e724db78b4ff2b5bba"
+  integrity sha512-qU5Zms9VUdxxq4oC7lY+Eibz+O6YjmctGZKToUfqQOC4qVkbUNksu+0UizFBdbtx8euERZ3GGcFoN6F9LeXSMw==
 
 "@milkdown-lab/plugin-split-editing@^0.1.4":
   version "0.1.4"
