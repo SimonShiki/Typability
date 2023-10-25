@@ -48,7 +48,7 @@
   "devDependencies": {
     "@formatjs/cli": "^6.2.1",
     "@formatjs/ts-transformer": "^3.13.6",
-    "@tauri-apps/cli": "^1.5.5",
+    "@tauri-apps/cli": "^1.5.6",
     "@types/node": "^20.8.8",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
