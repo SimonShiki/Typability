@@ -1820,10 +1820,10 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.3.tgz#9a726e116beb26c24f1ccd6850201e1246122e04"
   integrity sha512-OxepLK9EuNEIPxWNME+C6WwbRAOOI2o2BaQEGzz5Lu2e4Z5eDnEo+/aVEDMIXywoJitJ7xWd641wrGLZdtwRyw==
 
-"@types/showdown@^2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@types/showdown/-/showdown-2.0.5.tgz#e89077fc93c867f18eb9ce108482c644667cafde"
-  integrity sha512-fpzpGeXq69n032uOYFEmctcaWftPw4ZZ4saxMaIi6k+aZrTVjME1bT6xWp2JNUJiAM587FGuwW7jMqYixWzgVw==
+"@types/showdown@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@types/showdown/-/showdown-2.0.6.tgz#3d7affd5f971b4a17783ec2b23b4ad3b97477b7e"
+  integrity sha512-pTvD/0CIeqe4x23+YJWlX2gArHa8G0J0Oh6GKaVXV7TAeickpkkZiNOgFcFcmLQ5lB/K0qBJL1FtRYltBfbGCQ==
 
 "@types/unist@*", "@types/unist@^2.0.0", "@types/unist@^2.0.6":
   version "2.0.6"
