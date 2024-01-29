@@ -1703,11 +1703,6 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
-"@types/js-cookie@^2.x.x":
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.7.tgz#226a9e31680835a6188e887f3988e60c04d3f6a3"
-  integrity sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==
-
 "@types/json-schema@*", "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.11.tgz"
@@ -1984,23 +1979,16 @@ acorn@^8.9.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.9.0.tgz#78a16e3b2bcc198c10822786fa6679e245db5b59"
   integrity sha512-jaVNAFBHNLXspO543WnNNPZFRtavh3skAkITqD0/2aeMkKZTN+254PyhwxFYrk3vQ1xfY+2wbesJMs/JC8/PwQ==
 
-ahooks-v3-count@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ahooks-v3-count/-/ahooks-v3-count-1.0.0.tgz#ddeb392e009ad6e748905b3cbf63a9fd8262ca80"
-  integrity sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==
-
-ahooks@^3.7.8:
-  version "3.7.8"
-  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.7.8.tgz#3fa3c491cd153e884a32b0c4192fc72cf84c4332"
-  integrity sha512-e/NMlQWoCjaUtncNFIZk3FG1ImSkV/JhScQSkTqnftakRwdfZWSw6zzoWSG9OMYqPNs2MguDYBUFFC6THelWXA==
+ahooks@^3.7.9:
+  version "3.7.9"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.7.9.tgz#10b2be68884c0fed507393afd3f3ebbe18379d32"
+  integrity sha512-1nuCnaBe/DvZD2QAZVGLLmu0vDi6jxbiAP3Ghkj6Ocqk9YSXI6ydwo2x5I3lXowZyM8MNJDnHFvIo0vJS1CuFw==
   dependencies:
     "@babel/runtime" "^7.21.0"
-    "@types/js-cookie" "^2.x.x"
-    ahooks-v3-count "^1.0.0"
     dayjs "^1.9.1"
     intersection-observer "^0.12.0"
     js-cookie "^2.x.x"
-    lodash "^4.17.21"
+    lodash-es "^4.17.21"
     resize-observer-polyfill "^1.5.1"
     screenfull "^5.0.0"
     tslib "^2.4.1"
