@@ -3595,10 +3595,10 @@ iterator.prototype@^1.1.0:
     has-tostringtag "^1.0.0"
     reflect.getprototypeof "^1.0.3"
 
-jotai@^1.12.1:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/jotai/-/jotai-1.13.1.tgz#20cc46454cbb39096b12fddfa635b873b3668236"
-  integrity sha512-RUmH1S4vLsG3V6fbGlKzGJnLrDcC/HNb5gH2AeA9DzuJknoVxSGvvg8OBB7lke+gDc4oXmdVsaKn/xDUhWZ0vw==
+jotai@^2.6.5:
+  version "2.6.5"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.6.5.tgz#9b41b7f2b63c05c1a9009a9023f2aa5baf9adb94"
+  integrity sha512-T+yvY42GXKomvJYqs+NeTH0da9Z1tQ3Qk3zppPHIWnvmOBKpN6Qd4j8h/oo9dwxs3w/Z5r6Kk0I8h6z5orQ/HQ==
 
 js-cookie@^2.x.x:
   version "2.2.1"
