@@ -40,7 +40,7 @@
     "ahooks": "^3.7.10",
     "classnames": "^2.5.1",
     "jotai": "^1.12.1",
-    "react": "^18.2.0",
+    "react": "^18.3.0",
     "react-dom": "^18.2.0",
     "react-intl": "^6.6.2",
     "showdown": "^2.1.0"
@@ -50,7 +50,7 @@
     "@formatjs/ts-transformer": "^3.13.9",
     "@tauri-apps/cli": "^1.5.10",
     "@types/node": "^20.11.20",
-    "@types/react": "^18.2.60",
+    "@types/react": "^18.3.0",
     "@types/react-dom": "^18.2.19",
     "@types/showdown": "^2.0.6",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
