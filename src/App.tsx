@@ -107,7 +107,7 @@ function App () {
     });
 
     useEffect(() => {
-        if (settings.vibrancy !== 'none') invoke(`apply_${settings.vibrancy}`);
+        if (settings.vibrancy !== 'none') invoke(`apply_${settings.vibrancy}`, {dark: isDarkMode});
     }, [settings.vibrancy]);
 
     return (

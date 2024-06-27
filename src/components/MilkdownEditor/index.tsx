@@ -31,7 +31,7 @@ interface MilkdownEditor {
     syntaxOption?: keyof typeof syntaxMap;
     theme?: keyof typeof themeMap;
     onMarkdownUpdated?: (markdown: string, prevMarkdown: string | null) => void;
-    ref?: React.ForwardedRef<Editor>;
+    ref?: React.LegacyRef<Editor>;
 }
 
 const syntaxMap = {

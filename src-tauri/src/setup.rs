@@ -12,9 +12,9 @@ pub fn init(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>
 }
 
 #[tauri::command]
-pub fn apply_mica(window: tauri::Window) {
+pub fn apply_mica(window: tauri::Window, dark: Option<bool>) {
     #[cfg(target_os = "windows")]
-    window_vibrancy::apply_mica(&window)
+    window_vibrancy::apply_mica(&window, dark)
         .expect("Unsupported platform! 'apply_mica' is only supported on Windows 10.0.21996");
 }
 
@@ -22,6 +22,20 @@ pub fn apply_mica(window: tauri::Window) {
 pub fn clear_mica(window: tauri::Window) {
     #[cfg(target_os = "windows")]
     window_vibrancy::clear_mica(&window)
+        .expect("Unsupported platform! 'clear_mica' is only supported on Windows 10.0.21996");
+}
+
+#[tauri::command]
+pub fn apply_tabbed(window: tauri::Window, dark: Option<bool>) {
+    #[cfg(target_os = "windows")]
+    window_vibrancy::apply_tabbed(&window, dark)
+        .expect("Unsupported platform! 'apply_tabbed' is only supported on Windows 10.0.21996");
+}
+
+#[tauri::command]
+pub fn clear_tabbed(window: tauri::Window) {
+    #[cfg(target_os = "windows")]
+    window_vibrancy::clear_tabbed(&window)
         .expect("Unsupported platform! 'clear_mica' is only supported on Windows 10.0.21996");
 }
 

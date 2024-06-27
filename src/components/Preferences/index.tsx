@@ -10,13 +10,13 @@ import {
     Text,
     Switch,
     Dropdown,
+    Card,
     Option
 } from '@fluentui/react-components';
 import React, { useState } from 'react';
 import styles from './preferences.module.scss';
 import { useAtom } from 'jotai';
 import { settingsJotai } from '../../jotais/settings';
-import { Card } from '@fluentui/react-components/unstable';
 import { Warning16Regular } from '@fluentui/react-icons';
 import { invoke } from '@tauri-apps/api/tauri';
 import { vibrancyJotai } from '../../jotais/ui';
