@@ -4047,10 +4047,10 @@ iterator.prototype@^1.1.2:
     reflect.getprototypeof "^1.0.4"
     set-function-name "^2.0.1"
 
-jotai@^2.9.2:
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.9.2.tgz#0b1036bc1672d02ea7cf73c6b01728de461d6ecf"
-  integrity sha512-jIBXEadOHCziOuMY6HAy2KQcHipGhnsbF+twqh8Lcmcz/Yei0gdBtW5mOYdKmbQxGqkvfvXM3w/oHtJ2WNGSFg==
+jotai@^2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.9.3.tgz#abcae49a737cd50e3144a6c9eb39840db077c727"
+  integrity sha512-IqMWKoXuEzWSShjd9UhalNsRGbdju5G2FrqNLQJT+Ih6p41VNYe2sav5hnwQx4HJr25jq9wRqvGSWGviGG6Gjw==
 
 js-cookie@^3.0.5:
   version "3.0.5"
