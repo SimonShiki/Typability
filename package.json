@@ -13,7 +13,7 @@
     "i18n:extract": "formatjs extract --ignore=\"**/*.d.ts\" --out-file locale/en.json --format simple \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.54.12",
+    "@fluentui/react-components": "^9.54.13",
     "@fluentui/react-icons": "^2.0.253",
     "@material-design-icons/font": "^0.14.3",
     "@milkdown-lab/plugin-split-editing": "^0.1.4",
