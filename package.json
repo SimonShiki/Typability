@@ -58,7 +58,7 @@
     "@vitejs/plugin-react-swc": "^3.2.0",
     "eslint": "^8.36.0",
     "eslint-plugin-formatjs": "^4.9.0",
-    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react": "^7.35.1",
     "husky": "^9.1.5",
     "sass": "^1.77.8",
     "typescript": "^5.5.4",
