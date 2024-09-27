@@ -516,13 +516,13 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-breadcrumb@^9.0.38":
-  version "9.0.38"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-breadcrumb/-/react-breadcrumb-9.0.38.tgz#05abbd2fb490f6cc74cfd4861e1b94e1b84e5a4c"
-  integrity sha512-VWf/nNrJSWtYpT4eR4vl4+QNf8idXtdqChB22siAaFg8pBndBE6N4nsSgMcs70E+VQ4SuJVp9HQVSx8vpngi0Q==
+"@fluentui/react-breadcrumb@^9.0.39":
+  version "9.0.39"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-breadcrumb/-/react-breadcrumb-9.0.39.tgz#5e01d44e5ffc37e0530a8d3108c4556233beebcb"
+  integrity sha512-Y/d3+qwco1WPB/t7BpEES1LIqBrR1A/7r4jdVuNylgiK5OoRRDgRdu7+7ecT0sjnfyhHwv+PnImtXIOnGyKgrQ==
   dependencies:
     "@fluentui/react-aria" "^9.13.6"
-    "@fluentui/react-button" "^9.3.91"
+    "@fluentui/react-button" "^9.3.92"
     "@fluentui/react-icons" "^2.0.245"
     "@fluentui/react-jsx-runtime" "^9.0.44"
     "@fluentui/react-link" "^9.2.32"
@@ -533,10 +533,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-button@^9.3.83", "@fluentui/react-button@^9.3.91":
-  version "9.3.91"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-button/-/react-button-9.3.91.tgz#0be3de541cbf2280a0723d27c535114a251acd0a"
-  integrity sha512-g/0kn9S/SO/XRUkRpxnAfpe6rv2Tn/zJhygeyTy+rOGuR5MxAEDhauRnpjntt+h8U6088LGImZUTfU5vHjsVNg==
+"@fluentui/react-button@^9.3.83", "@fluentui/react-button@^9.3.92":
+  version "9.3.92"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-button/-/react-button-9.3.92.tgz#3291bd5e1eec073443c2db4f1ed151ba873ad63a"
+  integrity sha512-awMMtr3MnXB5Q8ItYJ6s4k5U3RKJImm8qAh0Zm/quK1Aj62fKa4Ro/P+dMzKhi+86VmE9wqVwWr9vim/MHGgow==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.7"
     "@fluentui/react-aria" "^9.13.6"
@@ -549,10 +549,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-card@^9.0.93":
-  version "9.0.93"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-card/-/react-card-9.0.93.tgz#f4301a0c1825f1bace4b2542025198e43c256c3d"
-  integrity sha512-HhaNzhnk1htPGF1Lvh9G9Bohm26Tt49csjz8/Xc+u/dfzoXPAmYJxgCOzHT6QPp0/e21Fy+cQONV051BO5dE5w==
+"@fluentui/react-card@^9.0.94":
+  version "9.0.94"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-card/-/react-card-9.0.94.tgz#9da8518f7e68fef21cc77935fae11d52d154edc7"
+  integrity sha512-TUzQLdCFcBkESgj6fVRH201OHvYPWB1n8b7unDSX5VjxcnHT8MKu2DWj5KHFmVaEd6sNEgNm58qiAGGjTSvkgg==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.7"
     "@fluentui/react-jsx-runtime" "^9.0.44"
@@ -579,10 +579,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-combobox@^9.13.7":
-  version "9.13.7"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-combobox/-/react-combobox-9.13.7.tgz#ec0e8b55eac253b82472c9309dcb28220978565d"
-  integrity sha512-UQnUdThddkwDzvPZmPTH3kFNYTotTmO2cg5+oKzhYfC5I8Km3tzclItRjNRxjjo9hdjDHn2ZiXpvr8qFWJbS/A==
+"@fluentui/react-combobox@^9.13.8":
+  version "9.13.8"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-combobox/-/react-combobox-9.13.8.tgz#78af4f8e7b3ef88ca94d8ca7461f4b3f0c966c95"
+  integrity sha512-+QuiFt1P93JwjtAy2b0cXah9BT0h9I2T1+fm4aX9j1sWME/r5XI/gGgYT15+PvAjxmBxcabYtd+VYYB0MKUoxw==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.7"
     "@fluentui/react-aria" "^9.13.6"
@@ -599,24 +599,24 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-components@^9.54.16":
-  version "9.54.16"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-components/-/react-components-9.54.16.tgz#5fa83c8287ff79820ec313cc2a60c15f58164df8"
-  integrity sha512-XLy3ZKlmb+BqJIWeOXEzh8yCFn/gkKWlSt50tAEck0WapUpCPcB+Ccst4eT81GJipH6yjyy/jZUnEEkKAYRvLA==
+"@fluentui/react-components@^9.54.17":
+  version "9.54.17"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-components/-/react-components-9.54.17.tgz#0c886c7743368912061c33276d9960469309b454"
+  integrity sha512-brnvcEGQG+S16hc9o+cXB9EEJmpicjP1+plYBuc5xKtz2Ljo1fAijM5MGP/pwMcQUU0GATFiVkIzvGwyD7y5aQ==
   dependencies:
     "@fluentui/react-accordion" "^9.5.5"
     "@fluentui/react-alert" "9.0.0-beta.124"
     "@fluentui/react-aria" "^9.13.6"
     "@fluentui/react-avatar" "^9.6.39"
     "@fluentui/react-badge" "^9.2.43"
-    "@fluentui/react-breadcrumb" "^9.0.38"
-    "@fluentui/react-button" "^9.3.91"
-    "@fluentui/react-card" "^9.0.93"
+    "@fluentui/react-breadcrumb" "^9.0.39"
+    "@fluentui/react-button" "^9.3.92"
+    "@fluentui/react-card" "^9.0.94"
     "@fluentui/react-checkbox" "^9.2.37"
-    "@fluentui/react-combobox" "^9.13.7"
-    "@fluentui/react-dialog" "^9.11.15"
+    "@fluentui/react-combobox" "^9.13.8"
+    "@fluentui/react-dialog" "^9.11.16"
     "@fluentui/react-divider" "^9.2.75"
-    "@fluentui/react-drawer" "^9.5.15"
+    "@fluentui/react-drawer" "^9.5.16"
     "@fluentui/react-field" "^9.1.76"
     "@fluentui/react-image" "^9.1.73"
     "@fluentui/react-infobutton" "9.0.0-beta.102"
@@ -625,7 +625,7 @@
     "@fluentui/react-label" "^9.1.76"
     "@fluentui/react-link" "^9.2.32"
     "@fluentui/react-menu" "^9.14.16"
-    "@fluentui/react-message-bar" "^9.2.11"
+    "@fluentui/react-message-bar" "^9.2.12"
     "@fluentui/react-motion" "^9.5.2"
     "@fluentui/react-overflow" "^9.1.30"
     "@fluentui/react-persona" "^9.2.98"
@@ -645,21 +645,21 @@
     "@fluentui/react-spinner" "^9.4.14"
     "@fluentui/react-swatch-picker" "^9.1.10"
     "@fluentui/react-switch" "^9.1.94"
-    "@fluentui/react-table" "^9.15.17"
+    "@fluentui/react-table" "^9.15.18"
     "@fluentui/react-tabs" "^9.5.1"
     "@fluentui/react-tabster" "^9.22.7"
-    "@fluentui/react-tag-picker" "^9.3.3"
+    "@fluentui/react-tag-picker" "^9.3.4"
     "@fluentui/react-tags" "^9.3.18"
-    "@fluentui/react-teaching-popover" "^9.1.17"
+    "@fluentui/react-teaching-popover" "^9.1.18"
     "@fluentui/react-text" "^9.4.25"
     "@fluentui/react-textarea" "^9.3.88"
     "@fluentui/react-theme" "^9.1.20"
     "@fluentui/react-toast" "^9.3.56"
-    "@fluentui/react-toolbar" "^9.2.5"
+    "@fluentui/react-toolbar" "^9.2.6"
     "@fluentui/react-tooltip" "^9.4.39"
-    "@fluentui/react-tree" "^9.8.1"
+    "@fluentui/react-tree" "^9.8.2"
     "@fluentui/react-utilities" "^9.18.15"
-    "@fluentui/react-virtualizer" "9.0.0-alpha.84"
+    "@fluentui/react-virtualizer" "9.0.0-alpha.85"
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
@@ -671,10 +671,10 @@
     "@fluentui/react-utilities" "^9.18.15"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-dialog@^9.11.15":
-  version "9.11.15"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-dialog/-/react-dialog-9.11.15.tgz#2a826d7186c979222e60dbb263ee84eb93de1dc1"
-  integrity sha512-yfEw7uc8wVvgK17YW7035TDfDAf86Ti/DRJaw/D9Ld/gOB9nLG1L6NBjbfYE4x+f0+r/BtG+0nhrNM95zG0sog==
+"@fluentui/react-dialog@^9.11.16":
+  version "9.11.16"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-dialog/-/react-dialog-9.11.16.tgz#fa7bc1b572e7a322413898a051e82ba4370f16a5"
+  integrity sha512-PP15i+mN6XI7knfrdTNexNHtGLBNbf7WmJZGiXZViBWrlGEAUyxdRqmNwQEXwz0xYduqMX7ddEw26e/Ag/BzwA==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.7"
     "@fluentui/react-aria" "^9.13.6"
@@ -702,12 +702,12 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-drawer@^9.5.15":
-  version "9.5.15"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-drawer/-/react-drawer-9.5.15.tgz#5ae880eadb629664ff0b441955eedd900a316585"
-  integrity sha512-YE6Dhv+8clafDiBHpUPF2P3WR0er2PO3HtyXCN/rUs5AKQpVYu4Uc2eQu/C6wnQMWgEui//FP6qTS3UXRMIJ/A==
+"@fluentui/react-drawer@^9.5.16":
+  version "9.5.16"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-drawer/-/react-drawer-9.5.16.tgz#9a0d452e3d7f3f2066490f619a78ef57986bb29c"
+  integrity sha512-GORGm43E981KHfg2HB/picUwpf3BbdwcfPUVslAdyqaR2A6OJ+fQGKjGDcHn/CPIfgPsg0wHVpVTkvJLTt/BzA==
   dependencies:
-    "@fluentui/react-dialog" "^9.11.15"
+    "@fluentui/react-dialog" "^9.11.16"
     "@fluentui/react-jsx-runtime" "^9.0.44"
     "@fluentui/react-motion" "^9.5.2"
     "@fluentui/react-shared-contexts" "^9.20.1"
@@ -857,12 +857,12 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-message-bar@^9.2.11":
-  version "9.2.11"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-message-bar/-/react-message-bar-9.2.11.tgz#3f1edd5e2f5c981386090b1d0beec5cb820bdc81"
-  integrity sha512-JQFbO1EKx0Qel6hdQbSJTdKdPGCyaprt/pFabHpbhmMbIRwtMPuPbni6/tX7Eak5a8fHTVmTaaPZaeDEDB5kww==
+"@fluentui/react-message-bar@^9.2.12":
+  version "9.2.12"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-message-bar/-/react-message-bar-9.2.12.tgz#75d50dfd5a8deb4491945e443dce8169532bdaf1"
+  integrity sha512-d18VBkEJnKqhhkiuxzoan91BEt/x/at6/pR6TH0sn9C7Snvxu88Ywl2ZrKEpaNUAvG0Ww3qE0lNepm/fOEuR+g==
   dependencies:
-    "@fluentui/react-button" "^9.3.91"
+    "@fluentui/react-button" "^9.3.92"
     "@fluentui/react-icons" "^2.0.245"
     "@fluentui/react-jsx-runtime" "^9.0.44"
     "@fluentui/react-shared-contexts" "^9.20.1"
@@ -1136,10 +1136,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-table@^9.15.17":
-  version "9.15.17"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-table/-/react-table-9.15.17.tgz#561df09f3f397fe1b2c756417bfac98c39ffff60"
-  integrity sha512-5PuN2OC/DaFEZdrw7WTIcZFqZbTAJU8gTtgbDHSvM3+KMsTE65JHus24sDrnAshjiNcYorEKZdoWZq/bDr46Aw==
+"@fluentui/react-table@^9.15.18":
+  version "9.15.18"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-table/-/react-table-9.15.18.tgz#5ed7dd4bae14ffe3762e9d74ca8bcbc684dba739"
+  integrity sha512-JbQeo8JW3o6kZ/01ynouCv6kTA22+lOUnig5h6npbuxTc8pR8erJ0a+D384a80o+vjN26ww1KXhCpkJLDWG6Bg==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.7"
     "@fluentui/react-aria" "^9.13.6"
@@ -1183,14 +1183,14 @@
     keyborg "^2.6.0"
     tabster "^8.0.1"
 
-"@fluentui/react-tag-picker@^9.3.3":
-  version "9.3.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-tag-picker/-/react-tag-picker-9.3.3.tgz#95e88691a0541b6d8158ee239af23a7ef07d7869"
-  integrity sha512-okIO+Ock5t7dvNUHTtJyw6OPTqYsSnDy8mePhG67pGwDDOTGWqgikEfUBDN1bO8NaQf56tivubyyg7s2boLZTg==
+"@fluentui/react-tag-picker@^9.3.4":
+  version "9.3.4"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-tag-picker/-/react-tag-picker-9.3.4.tgz#dfe05673e814bbd562cfc0e237f371ed20bbeaa2"
+  integrity sha512-eV6snlflC9LCZeqrhPDU/p9OeXC/Kb5CX502/N6yuT25GcV1u3pePvPBKG4ac090nSlC54/GgYBmCHS5m5+r4w==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.7"
     "@fluentui/react-aria" "^9.13.6"
-    "@fluentui/react-combobox" "^9.13.7"
+    "@fluentui/react-combobox" "^9.13.8"
     "@fluentui/react-context-selector" "^9.1.67"
     "@fluentui/react-field" "^9.1.76"
     "@fluentui/react-icons" "^2.0.245"
@@ -1222,13 +1222,13 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-teaching-popover@^9.1.17":
-  version "9.1.17"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-teaching-popover/-/react-teaching-popover-9.1.17.tgz#a5824e2b40a6830dac045c55b027f8e2f814a695"
-  integrity sha512-aA7ImKM4xGf/CK1Bhs5MD8suow76vdRzscHnvCRMBZ9MSqLlkLglvJevzntyhuUAEV1qXxaJZHHbWhY5+/cfHA==
+"@fluentui/react-teaching-popover@^9.1.18":
+  version "9.1.18"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-teaching-popover/-/react-teaching-popover-9.1.18.tgz#ff9681b42aa728b766f9e6d2c6d2358ab73edc8a"
+  integrity sha512-v2HMRMj9etIUPs8G+pfv57SODwjTnZ9trNoSq5IfM5Fh1Rg6TnFAUGweWA2k0M0JKtRXkCixOCqNUiBXen0zXw==
   dependencies:
     "@fluentui/react-aria" "^9.13.6"
-    "@fluentui/react-button" "^9.3.91"
+    "@fluentui/react-button" "^9.3.92"
     "@fluentui/react-context-selector" "^9.1.67"
     "@fluentui/react-icons" "^2.0.245"
     "@fluentui/react-jsx-runtime" "^9.0.44"
@@ -1292,12 +1292,12 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-toolbar@^9.2.5":
-  version "9.2.5"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-toolbar/-/react-toolbar-9.2.5.tgz#8301650ee603854a230201e1caceb65fc2c6ed58"
-  integrity sha512-Z4FEfrNsI5WJKv0/cuU6ysyGVi35EXVpkuLxnodUkFxTXu3nNUrBnqgEomz7p6psnOjFXJP1PvxU+ndAQhtVJg==
+"@fluentui/react-toolbar@^9.2.6":
+  version "9.2.6"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-toolbar/-/react-toolbar-9.2.6.tgz#b9c05d3cb3076f52ab1a724822d4f8c826b88d28"
+  integrity sha512-G+rFX0vuufM+GZVIdcFn15kdVYw2+j32rj3jHHwAbT1wx8W6OVSR0opVGcJTwYAuKXq39J/1sHEcwbX4vAG0TQ==
   dependencies:
-    "@fluentui/react-button" "^9.3.91"
+    "@fluentui/react-button" "^9.3.92"
     "@fluentui/react-context-selector" "^9.1.67"
     "@fluentui/react-divider" "^9.2.75"
     "@fluentui/react-jsx-runtime" "^9.0.44"
@@ -1325,15 +1325,15 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-tree@^9.8.1":
-  version "9.8.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-tree/-/react-tree-9.8.1.tgz#a5708377d2a77a33c4cc650c80e1d9113b6b8a6e"
-  integrity sha512-nKvzBl5hLHUU7NcRlljxfWhEeRsPZrTGAz6+aVbT6C1Lu6AC2kOhLryjRqGct0/9KK7N3WS0UjNjDS7dXtt8TQ==
+"@fluentui/react-tree@^9.8.2":
+  version "9.8.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-tree/-/react-tree-9.8.2.tgz#f6bf371d3ccc397b44b1be14aef3975bfd5b1c43"
+  integrity sha512-b4Zfq+pMQIgHGoQA6V6AnehnmOKoV8KMxNpUOn/73N16NphbhrI8KnsVph1Wst/pLT/7p6ANdKt9nnE9SMai/A==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.7"
     "@fluentui/react-aria" "^9.13.6"
     "@fluentui/react-avatar" "^9.6.39"
-    "@fluentui/react-button" "^9.3.91"
+    "@fluentui/react-button" "^9.3.92"
     "@fluentui/react-checkbox" "^9.2.37"
     "@fluentui/react-context-selector" "^9.1.67"
     "@fluentui/react-icons" "^2.0.245"
@@ -1357,10 +1357,10 @@
     "@fluentui/react-shared-contexts" "^9.20.1"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-virtualizer@9.0.0-alpha.84":
-  version "9.0.0-alpha.84"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-virtualizer/-/react-virtualizer-9.0.0-alpha.84.tgz#0270433388be1eab9be4f42cfbf2b2d4cde1f639"
-  integrity sha512-CM0fKLVKQ++Z1KCFDQpxo9gULkIwAbtOFFcJwl5nxqszRmML3dL+dSX5NZMSCk2bg1VlQ+Dx1tqL5Q/Eh1f2aQ==
+"@fluentui/react-virtualizer@9.0.0-alpha.85":
+  version "9.0.0-alpha.85"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-virtualizer/-/react-virtualizer-9.0.0-alpha.85.tgz#0aeca54c53d9c8bfa9107724538e96b139f2304c"
+  integrity sha512-zdwqj3sLH1TeMwgXNFOVsWtWrH/zD4vmq1s/WkbB4Wu5h/CeemQEN3//WVpz0AB3cZGvcPiTitKH12AfaCqXIQ==
   dependencies:
     "@fluentui/react-jsx-runtime" "^9.0.44"
     "@fluentui/react-shared-contexts" "^9.20.1"
