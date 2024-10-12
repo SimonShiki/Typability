@@ -1,7 +1,7 @@
 {
   "name": "typability",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "preview": "vite preview",
     "tauri": "tauri",
-    "prepare": "husky install",
+    "prepare": "husky",
     "i18n:extract": "formatjs extract --ignore=\"**/*.d.ts\" --out-file locale/en.json --format simple \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
