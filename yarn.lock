@@ -1396,10 +1396,10 @@
   dependencies:
     "@swc/helpers" "^0.5.1"
 
-"@formatjs/cli@^6.2.14":
-  version "6.2.14"
-  resolved "https://registry.yarnpkg.com/@formatjs/cli/-/cli-6.2.14.tgz#466fbfe943a3a07fd6dbd0166f4fc4372ffc7199"
-  integrity sha512-1eSJAUQLgL9dgsrXJ1PzMAguXOPpJa1dJmMkF8GZo0jnKkavq2cdljJt2vXDeSvqWmKwqY9h4/bELr9dTOoHMw==
+"@formatjs/cli@^6.2.15":
+  version "6.2.15"
+  resolved "https://registry.yarnpkg.com/@formatjs/cli/-/cli-6.2.15.tgz#a858acdb163b25788ed63b405b1cb0388bdff016"
+  integrity sha512-s31YblAseSVqgFvY2EoIZaaEycifR/CadvMj1WcNvFvHK+2Xn02OuSX1jiKM/Nx29hX2x8k0raFJ6PtnXZgjtQ==
 
 "@formatjs/ecma402-abstract@2.0.0":
   version "2.0.0"
