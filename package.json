@@ -49,7 +49,7 @@
     "@formatjs/cli": "^6.3.5",
     "@formatjs/ts-transformer": "^3.13.20",
     "@tauri-apps/cli": "^1.6.2",
-    "@types/node": "^22.8.2",
+    "@types/node": "^22.8.4",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/showdown": "^2.0.0",
