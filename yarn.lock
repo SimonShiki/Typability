@@ -563,10 +563,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-carousel@^9.3.0":
-  version "9.3.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-carousel/-/react-carousel-9.3.0.tgz#7c9fd5946bc5c992471f6e18f666fe53363445c9"
-  integrity sha512-ZdA8Ri0wRcn7SZ/uHHK/m9YnYzb1tAyfrhHw6mh551IxMl1KjvuEc5hqpsYgQBDgvluVeQhSa2cDEU9qHKQr6A==
+"@fluentui/react-carousel@^9.3.1":
+  version "9.3.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-carousel/-/react-carousel-9.3.1.tgz#f83d7fe853ad82e128272ad28e0af6813eb6d307"
+  integrity sha512-nDUOVPAADNRlwg7/KtXgYEgALfll/Zcx7MAIqZkwxtroPzuOqm2CjeMVBwWoekEQzs75i+PgNgL1eXAQwgsAAQ==
   dependencies:
     "@fluentui/react-aria" "^9.13.9"
     "@fluentui/react-button" "^9.3.95"
@@ -619,10 +619,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-components@^9.56.0":
-  version "9.56.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-components/-/react-components-9.56.0.tgz#89cfb820074c97b2724836cbc07b0df90e51409f"
-  integrity sha512-LPoyzCw/WqMwKyQJvQDGvCCZ0VTFIKSZpaUT9n1l5UE7C9ZYUiAw5R3QXX0H63a2/dZFQPre9/IG/B204i4zuw==
+"@fluentui/react-components@^9.56.1":
+  version "9.56.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-components/-/react-components-9.56.1.tgz#154080051eb77790f9191f3c553b7712eed991de"
+  integrity sha512-FIbebfQstf5ZPnAxyKi2IK9AOocol4gJ9RZTWxxdfPRMhspNmD0HEj3HjFYQbNWmOJC1oG9J58Q67vsYk/TuHA==
   dependencies:
     "@fluentui/react-accordion" "^9.5.8"
     "@fluentui/react-alert" "9.0.0-beta.124"
@@ -632,12 +632,12 @@
     "@fluentui/react-breadcrumb" "^9.0.42"
     "@fluentui/react-button" "^9.3.95"
     "@fluentui/react-card" "^9.0.97"
-    "@fluentui/react-carousel" "^9.3.0"
+    "@fluentui/react-carousel" "^9.3.1"
     "@fluentui/react-checkbox" "^9.2.40"
     "@fluentui/react-combobox" "^9.13.11"
-    "@fluentui/react-dialog" "^9.11.19"
+    "@fluentui/react-dialog" "^9.11.20"
     "@fluentui/react-divider" "^9.2.77"
-    "@fluentui/react-drawer" "^9.5.19"
+    "@fluentui/react-drawer" "^9.6.0"
     "@fluentui/react-field" "^9.1.79"
     "@fluentui/react-image" "^9.1.75"
     "@fluentui/react-infobutton" "9.0.0-beta.102"
@@ -669,8 +669,8 @@
     "@fluentui/react-table" "^9.15.21"
     "@fluentui/react-tabs" "^9.6.1"
     "@fluentui/react-tabster" "^9.23.0"
-    "@fluentui/react-tag-picker" "^9.3.7"
-    "@fluentui/react-tags" "^9.3.21"
+    "@fluentui/react-tag-picker" "^9.3.8"
+    "@fluentui/react-tags" "^9.3.22"
     "@fluentui/react-teaching-popover" "^9.1.21"
     "@fluentui/react-text" "^9.4.27"
     "@fluentui/react-textarea" "^9.3.91"
@@ -692,10 +692,10 @@
     "@fluentui/react-utilities" "^9.18.17"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-dialog@^9.11.19":
-  version "9.11.19"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-dialog/-/react-dialog-9.11.19.tgz#f2caec134ef2cfbfb189dc73eb0511620a3629e4"
-  integrity sha512-Mpe3cPPDEat7+7IBfNMI3DU9llde0RNwIroV6/9D3ekEQyCtAAZPgBkiPLfTaaEU1LpkFew+lXRdb/1USpH1cQ==
+"@fluentui/react-dialog@^9.11.20":
+  version "9.11.20"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-dialog/-/react-dialog-9.11.20.tgz#62bb2362c9b134945afb0d61deaf40a30ae3fe27"
+  integrity sha512-1u53qYXfHZx5xdFds3yxuLQUhzyEOecJh3qI/4bavx1FUpsxt0YmpezUVnFxt40Fj448ZPxNj0xts1CtTkmXTA==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.8"
     "@fluentui/react-aria" "^9.13.9"
@@ -723,14 +723,15 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-drawer@^9.5.19":
-  version "9.5.19"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-drawer/-/react-drawer-9.5.19.tgz#4c59c1bb9b5c7cb0ab4c138ff68c34ddeac8a6d8"
-  integrity sha512-8iIe5JeJ4OIJ7Ep0MPF7GKD5IDbPtKuQlWt2wSM+aW26qe2kWCaFGjqaAlWVduHgCiDS9afWIehODGT3u1AjbA==
+"@fluentui/react-drawer@^9.6.0":
+  version "9.6.0"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-drawer/-/react-drawer-9.6.0.tgz#ff3e15ffa57fd858001f06b28e494e3e2c833666"
+  integrity sha512-707//7TJ9yE4xyTDsTfR8SkEiaSgcWtJQRXoeYE3hiBBqerBrzyPLZQ3MKvn3ZtVDafUHxeEdu4vZFvvzozP+w==
   dependencies:
-    "@fluentui/react-dialog" "^9.11.19"
+    "@fluentui/react-dialog" "^9.11.20"
     "@fluentui/react-jsx-runtime" "^9.0.46"
     "@fluentui/react-motion" "^9.6.1"
+    "@fluentui/react-portal" "^9.4.38"
     "@fluentui/react-shared-contexts" "^9.21.0"
     "@fluentui/react-tabster" "^9.23.0"
     "@fluentui/react-theme" "^9.1.22"
@@ -1205,10 +1206,10 @@
     keyborg "^2.6.0"
     tabster "^8.2.0"
 
-"@fluentui/react-tag-picker@^9.3.7":
-  version "9.3.7"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-tag-picker/-/react-tag-picker-9.3.7.tgz#620db67fa6998e9f3aa6a8f89fe219187b55f985"
-  integrity sha512-o+boes2q9jFRNG/VetKSHboRHmHEy79do3OXKAxCn8t7VWaFF7v8psZeDg9Zzg0sgYoWu2JGYoaq/XZIpQhhJA==
+"@fluentui/react-tag-picker@^9.3.8":
+  version "9.3.8"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-tag-picker/-/react-tag-picker-9.3.8.tgz#b8ca31b7fa8353fef3d528d7414919f9af08d545"
+  integrity sha512-KgVE1JqC/5YjrZKIw36PcWtWcE4x470EnjFVJOFOiixrmYDgvtmaiRXAZWG67YoweNA+tnujA24AenuTyRWucA==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.8"
     "@fluentui/react-aria" "^9.13.9"
@@ -1221,16 +1222,16 @@
     "@fluentui/react-positioning" "^9.15.11"
     "@fluentui/react-shared-contexts" "^9.21.0"
     "@fluentui/react-tabster" "^9.23.0"
-    "@fluentui/react-tags" "^9.3.21"
+    "@fluentui/react-tags" "^9.3.22"
     "@fluentui/react-theme" "^9.1.22"
     "@fluentui/react-utilities" "^9.18.17"
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-tags@^9.3.21":
-  version "9.3.21"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-tags/-/react-tags-9.3.21.tgz#d4a44bbf91069f5233e4710e838abb74e2980266"
-  integrity sha512-vryz6jEWb7jioK5j90sNKYe21i+BPr/VH0DmGfDudM+eH5FwujxgV536pfgH7098W/f0G5PjPEt2p5Uwx34Tyw==
+"@fluentui/react-tags@^9.3.22":
+  version "9.3.22"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-tags/-/react-tags-9.3.22.tgz#a602358d1a2ec4ab2eef00c2ab6383079a548371"
+  integrity sha512-+bJwMLtAGqzUBNXvTgjKyuU1W3h51Z2z4mffRLhKaaFbSSl2Dp4z0n8KCN0xipiZF0ktu9xWDbk9xTpnOWb0Aw==
   dependencies:
     "@fluentui/keyboard-keys" "^9.0.8"
     "@fluentui/react-aria" "^9.13.9"
