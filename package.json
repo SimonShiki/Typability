@@ -61,7 +61,7 @@
     "eslint-plugin-react": "^7.37.2",
     "husky": "^9.1.7",
     "sass": "^1.81.0",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "vite": "^5.4.11"
   }
 }
