@@ -2503,10 +2503,10 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@vitejs/plugin-react-swc@^3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-react-swc/-/plugin-react-swc-3.7.1.tgz#bc5af48ef35c525d623fa14177c912cbaa86a846"
-  integrity sha512-vgWOY0i1EROUK0Ctg1hwhtC3SdcDjZcdit4Ups4aPkDcB1jYhmo+RMYWY87cmXMhvtD5uf8lV89j2w16vkdSVg==
+"@vitejs/plugin-react-swc@^3.7.2":
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-react-swc/-/plugin-react-swc-3.7.2.tgz#b0958dd44c48dbd37b5ef887bdb8b8d1276f24cd"
+  integrity sha512-y0byko2b2tSVVf5Gpng1eEhX1OvPC7x8yns1Fx8jDzlJp4LS6CMkCPfLw47cjyoMrshQDoQw4qcgjsU9VvlCew==
   dependencies:
     "@swc/core" "^1.7.26"
 
