@@ -2542,10 +2542,10 @@ acorn@^8.9.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.12.0.tgz#1627bfa2e058148036133b8d9b51a700663c294c"
   integrity sha512-RTvkC4w+KNXrM39/lWCUaG0IbRkWdCv7W/IOW9oU6SawyxulvkQy5HQPVTKxEjczcUvapcrw3cFx/60VN/NRNw==
 
-ahooks@^3.8.1:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.8.1.tgz#3a19d0e4085618a7a38a22a34b568c8d3fd974c0"
-  integrity sha512-JoP9+/RWO7MnI/uSKdvQ8WB10Y3oo1PjLv+4Sv4Vpm19Z86VUMdXh+RhWvMGxZZs06sq2p0xVtFk8Oh5ZObsoA==
+ahooks@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.8.2.tgz#3e3cc70d181753ffa172fe0aa8272540d9000531"
+  integrity sha512-iuYD3PWopdw9HqH++3ul6/Oxl9Q9/tP+np4yiYd0mIzN3QfDKnyII28MWUcmSkaHF415R6bUcrl0vD/80NNogg==
   dependencies:
     "@babel/runtime" "^7.21.0"
     dayjs "^1.9.1"
