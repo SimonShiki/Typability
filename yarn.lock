@@ -624,10 +624,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-components@^9.56.7":
-  version "9.56.7"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-components/-/react-components-9.56.7.tgz#bf7b22a4a8bb993b388e34b207f710e35e1afb48"
-  integrity sha512-YF9Lu9WVkRsKsrm6Ht8k0cotkcFewJjJVRcUeS/E9XgHVUpr/es/YQjdi5ug4Nj9QRQoI51WfqnhFCZn5Zp2iQ==
+"@fluentui/react-components@^9.56.8":
+  version "9.56.8"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-components/-/react-components-9.56.8.tgz#e3e8702f98f6b6f3b5a98501e36929b0829d4892"
+  integrity sha512-7Japh4zntMzCha2iuDYPPPCabvETpmJpxiLJptVR/iq7NdjYgpSX7RUkuIjjJOyYyvk6e1bQW9KXO6Eg3HyMPA==
   dependencies:
     "@fluentui/react-accordion" "^9.5.12"
     "@fluentui/react-alert" "9.0.0-beta.124"
@@ -651,7 +651,7 @@
     "@fluentui/react-label" "^9.1.81"
     "@fluentui/react-link" "^9.3.5"
     "@fluentui/react-menu" "^9.14.24"
-    "@fluentui/react-message-bar" "^9.2.18"
+    "@fluentui/react-message-bar" "^9.2.19"
     "@fluentui/react-motion" "^9.6.5"
     "@fluentui/react-overflow" "^9.2.5"
     "@fluentui/react-persona" "^9.2.106"
@@ -885,10 +885,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-message-bar@^9.2.18":
-  version "9.2.18"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-message-bar/-/react-message-bar-9.2.18.tgz#525a221e0188e444631dd10c03c67677388d8acb"
-  integrity sha512-l2u8ouxXUMALK+GADbLQoHDOoNj+299lB6JnsXFPNaqi58euJlPXHApfXtRM6gxAtL/7krKd/FHtGyFFQj3c2w==
+"@fluentui/react-message-bar@^9.2.19":
+  version "9.2.19"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-message-bar/-/react-message-bar-9.2.19.tgz#aef512de0a7cb140aeda618167bdea5674988299"
+  integrity sha512-wiO3kW8rCuCTscBZMUS9Lmt8e6DZiziwspjM/5ELu7DF6TQtIgPRe0CStL2UZEXvyLcGTpCCCj64LiTQ7UQhtA==
   dependencies:
     "@fluentui/react-button" "^9.3.98"
     "@fluentui/react-icons" "^2.0.245"
