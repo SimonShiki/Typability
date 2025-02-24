@@ -36,7 +36,7 @@
     "@milkdown/react": "^6.5.4",
     "@milkdown/theme-nord": "^6.5.4",
     "@milkdown/theme-tokyo": "^6.5.4",
-    "@tauri-apps/api": "^1.6.0",
+    "@tauri-apps/api": "^2.2.0",
     "ahooks": "^3.8.4",
     "classnames": "^2.5.1",
     "jotai": "^2.12.1",
