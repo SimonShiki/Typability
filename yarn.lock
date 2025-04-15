@@ -4618,10 +4618,10 @@ iterator.prototype@^1.1.4:
     reflect.getprototypeof "^1.0.8"
     set-function-name "^2.0.2"
 
-jotai@^2.12.2:
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.12.2.tgz#21626f5f019fc971b4da6bc528790a02d1448e3c"
-  integrity sha512-oN8715y7MkjXlSrpyjlR887TOuc/NLZMs9gvgtfWH/JP47ChwO0lR2ijSwBvPMYyXRAPT+liIAhuBavluKGgtA==
+jotai@^2.12.3:
+  version "2.12.3"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.12.3.tgz#517ccfd92b35a3d98b944545166ddeecd29e7784"
+  integrity sha512-DpoddSkmPGXMFtdfnoIHfueFeGP643nqYUWC6REjUcME+PG2UkAtYnLbffRDw3OURI9ZUTcRWkRGLsOvxuWMCg==
 
 js-cookie@^3.0.5:
   version "3.0.5"
