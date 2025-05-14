@@ -22,7 +22,7 @@
     "@milkdown/plugin-clipboard": "^6.5.4",
     "@milkdown/plugin-cursor": "^6.5.4",
     "@milkdown/plugin-diagram": "^6.5.4",
-    "@milkdown/plugin-emoji": "^6.5.4",
+    "@milkdown/plugin-emoji": "^7.10.3",
     "@milkdown/plugin-history": "^6.5.4",
     "@milkdown/plugin-listener": "^6.5.4",
     "@milkdown/plugin-math": "^6.5.4",
