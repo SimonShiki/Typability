@@ -24,7 +24,7 @@
     "@milkdown/plugin-diagram": "^6.5.4",
     "@milkdown/plugin-emoji": "^6.5.4",
     "@milkdown/plugin-history": "^6.5.4",
-    "@milkdown/plugin-listener": "^6.5.4",
+    "@milkdown/plugin-listener": "^7.16.0",
     "@milkdown/plugin-math": "^6.5.4",
     "@milkdown/plugin-menu": "^6.5.4",
     "@milkdown/plugin-prism": "^6.5.4",
